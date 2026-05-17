@@ -1,6 +1,17 @@
 from sqlalchemy.orm import Session
 from db.models import Task
 
+def remove_task(db: Session, id: int) -> Task | None:
+    task = db.query(Task).filter(Task.id == id).first()
+
+    if task is None:
+        return None 
+
+    db.delete(task)
+    db.commit()
+
+    return task 
+
 def get_task(db: Session, task_data: dict) -> Task | None:
     task = db.query(Task).filter(Task.name == task_data["name"]).first()
     return task

@@ -1,6 +1,22 @@
 from sqlalchemy.orm import Session
 from db.models import Player
 
+def update_EN_Name(db: Session, id: int, EN_name: str) -> Player | None:
+    if player := get_player(db, id):
+        player.EN_name = EN_name
+        db.commit()
+        db.refresh(player)
+        return player
+    return None
+
+def update_transfermarkt_URL(db: Session, id: int, transfermarkt_URL: str) -> Player | None:
+    if player := get_player(db, id):
+        player.transfermarkt_URL = transfermarkt_URL 
+        db.commit()
+        db.refresh(player)
+        return player
+    return None
+
 def get_player(db: Session, id: int) -> Player | None:
     player = db.query(Player).filter(Player.id == id).first()
     return player
