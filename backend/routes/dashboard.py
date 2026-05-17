@@ -3,7 +3,7 @@ import math
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from db.schemas import PlayerSchema
-from service.player_service import get_player, update_EN_Name
+from service.player_service import get_player, update_EN_Name, update_transfermarkt_URL
 from service.task_service import get_task_range, get_task_count, remove_task
 from db.schemas import TaskSchema
 from db.db import get_session
@@ -35,6 +35,14 @@ def get_player_by_id(id: int, db: Session = Depends(get_session)) -> PlayerSchem
 def update_player_EN_Name(id: int, EN_name: str, db: Session = Depends(get_session)) -> PlayerSchema:
     player = update_EN_Name(db, id, EN_name)
 
+    if player is None:
+        raise HTTPException(status_code=404, detail=f"Player with ID {id} not found")
+    else:
+        return player
+
+@dashboard_router.put("/players/update_transfermarkt_URL", response_model=PlayerSchema)
+def update_player_transfermarkt_URL(id: int, URL: str, db: Session = Depends(get_session)) -> PlayerSchema:
+    player = update_transfermarkt_URL(db, id, URL)
     if player is None:
         raise HTTPException(status_code=404, detail=f"Player with ID {id} not found")
     else:

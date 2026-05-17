@@ -1,9 +1,10 @@
+from scraper.team_list import scrape_team_list
 from sqlalchemy.orm import Session
-from db.db import get_session
-from service.task_service import create_task
+from db.db import SessionLocal, get_session
+from service.task_service import create_task, get_task, remove_task
 from scraper import player_list
 from scraper.main import load_teams
-from service.player_service import create_player
+from service.player_service import create_player, get_players_from_team, update_transfermarkt_URL
 from fastapi import Depends, FastAPI
 from routes.dashboard import dashboard_router
 from fastapi.middleware.cors import CORSMiddleware
@@ -51,3 +52,42 @@ def load_all_players(db: Session = Depends(get_session)):
                 create_task(db, task_data)
 
             print(f"FINISHED {player_obj.JP_name}")
+
+def load_transfermarkt(db: Session):
+    teams = load_teams()
+
+    for team_name in teams:
+        print(team_name)
+        team_URLs = scrape_team_list(teams[team_name])
+        players = get_players_from_team(db, team_name)
+
+        for player in players:
+            if not player.EN_name:
+                task_data = {
+                    "name": f"{player.JP_name} is missing ENGLISH NAME",
+                    "task_type": "MISSING EN_NAME",
+                    "player_id": player.id
+                }
+                create_task(db, task_data)
+                print(f"NO EN_NAME {player.JP_name}")
+                continue
+
+            url_key = player.EN_name + player.back_number
+            if url_key in team_URLs:
+                update_transfermarkt_URL(db, player.id, team_URLs[url_key])
+                
+                task = get_task(db, {"name": f"{player.JP_name} is missing TRANSFERMARKT URL"})
+
+                if task:
+                    remove_task(db, task.id)
+
+                print(f"ADDED {player.JP_name} {player.EN_name} -> {team_URLs[url_key]}")
+            else:
+                task_data = {
+                    "name": f"{player.JP_name} is missing TRANSFERMARKT URL",
+                    "task_type": "MISSING TRANSFERMARKT_URL",
+                    "player_id": player.id
+                }
+                create_task(db, task_data)
+                print(f"X {player.JP_name} {player.EN_name}")
+

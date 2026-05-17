@@ -25,7 +25,7 @@ function TaskListPageSelector(props) {
         else {
             props.setPage(props.page + increment)
         }
-        setStart(Math.min(props.maxPageCount - jumpIncrement + 1, props.page + increment))
+        setStart(Math.max(1, Math.min(props.maxPageCount - jumpIncrement + 1, props.page + increment)))
     }
 
     return (
@@ -38,7 +38,7 @@ function TaskListPageSelector(props) {
             </button>
 
             <div className={styles.page_selector_container}>
-                {Array.from({length: jumpIncrement}, (_, i) => {
+                {Array.from({length: Math.min(props.maxPageCount, jumpIncrement)}, (_, i) => {
                     const page_value = start + i;
                     return <button key={i} disabled={props.page == page_value} onClick={() => props.setPage(page_value)}>{page_value}</button>
                 })}

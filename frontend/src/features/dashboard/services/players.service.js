@@ -10,6 +10,11 @@ export const submitEnName = async(playerID, EnName) => {
     return res.data;
 };
 
+export const submitTransfermarktURL = async(playerID, transfermarktURL) => {
+    const res = await dashboard_api.put(`/players/update_transfermarkt_URL?id=${playerID}&URL=${transfermarktURL}`);
+    return res.data;
+};
+
 export const removeTask = async(taskID) => {
     const res = await dashboard_api.delete(`/tasks/delete?id=${taskID}`);
     return res.data;

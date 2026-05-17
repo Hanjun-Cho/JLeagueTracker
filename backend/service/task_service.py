@@ -10,7 +10,7 @@ def remove_task(db: Session, id: int) -> Task | None:
     db.delete(task)
     db.commit()
 
-    return task 
+    return task
 
 def get_task(db: Session, task_data: dict) -> Task | None:
     task = db.query(Task).filter(Task.name == task_data["name"]).first()

@@ -21,6 +21,9 @@ def get_player(db: Session, id: int) -> Player | None:
     player = db.query(Player).filter(Player.id == id).first()
     return player
 
+def get_players_from_team(db: Session, team: str) -> list:
+    return db.query(Player).filter(Player.team == team).all()
+
 def create_player(db: Session, player_data: dict) -> Player:
     if player := get_player(db, player_data["id"]):
         return player
