@@ -1,9 +1,10 @@
 from typing import Optional
-from sqlalchemy import String, Integer
+from sqlalchemy import ForeignKey, String, Integer
 from sqlalchemy.orm import (
     DeclarativeBase,
     Mapped,
     mapped_column,
+    relationship,
 )
 
 class Base(DeclarativeBase):
@@ -25,3 +26,19 @@ class Player(Base):
     EN_name: Mapped[Optional[str]] = mapped_column(String, nullable=True) 
     transfermarkt_URL: Mapped[Optional[str]] = mapped_column(String, nullable=True)
 
+    tasks = relationship("Task", back_populates="player")
+
+class Task(Base):
+    __tablename__ = "tasks"
+
+    id: Mapped[int] = mapped_column(
+        Integer,
+        primary_key=True,
+        index=True
+    )
+
+    name: Mapped[str] = mapped_column(String)
+    task_type: Mapped[str] = mapped_column(String)
+    player_id: Mapped[int] = mapped_column(Integer, ForeignKey("players.id"))
+
+    player = relationship("Player", back_populates="tasks")

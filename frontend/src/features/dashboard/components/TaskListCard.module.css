@@ -1,0 +1,14 @@
+.task_list_card {
+    max-width: 100%;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 12px;
+    border: 1px solid black;
+    cursor: pointer;
+
+}
+
+.task_list_card:hover {
+    background-color: lightblue;
+}
+

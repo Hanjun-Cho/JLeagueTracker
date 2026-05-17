@@ -1,0 +1,33 @@
+.task_list_page_selector {
+    background-color: lightgray;
+    border-top: 1px solid black;
+
+    display: grid;
+    grid-template-columns: 40px 40px 1fr 40px 40px;
+}
+
+.page_move_button {
+    height: 100%;
+}
+
+.revert_button {
+    transform: scaleX(-1);
+}
+
+.back_button {
+    transform: scale(0.7) scaleX(-1);
+}
+
+.next_button {
+    transform: scale(0.7);
+}
+
+.page_selector_container {
+    max-height: 100%;
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+}
+
+button {
+    cursor: pointer;
+}
