@@ -27,8 +27,29 @@ def update_dob(db: Session, id: int, dob: str) -> Player | None:
         return player
     return None
 
+def update_ordb_id(db: Session, id: int, ordb_id: str) -> Player | None:
+    if player := get_player(db, id):
+        player.ordb_id = ordb_id 
+        db.commit()
+        db.refresh(player)
+        return player
+    return None
+
+def update_wyscout_id(db: Session, id: int, wyscout_id: str) -> Player | None:
+    if player := get_player(db, id):
+        player.wyscout_id = wyscout_id 
+        db.commit()
+        db.refresh(player)
+        return player
+    return None
+
 def get_player(db: Session, id: int) -> Player | None:
     player = db.query(Player).filter(Player.id == id).first()
+    return player
+
+def get_player_link(db: Session, name: str, dob: str, team: str) -> Player | None:
+    date_obj = datetime.strptime(dob, "%m/%d/%Y").date()
+    player = db.query(Player).filter(Player.EN_name == name and Player.date_of_birth == date_obj and Player.team == team).first()
     return player
 
 def get_players_from_team(db: Session, team: str) -> list:

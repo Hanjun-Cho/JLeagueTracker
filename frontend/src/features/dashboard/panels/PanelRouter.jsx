@@ -4,6 +4,7 @@ import MissingEnNamePanel from "./MissingENNamePanel";
 import MissingTransfermarktURLPanel from "./MissingTransfermarktURLPanel";
 import PanelHeader from "./PanelHeader";
 import { removeTask } from "../services/players.service";
+import MissingOrdbIDPanel from "./MissingOrdbIDPanel";
 
 function PanelRouter(props) {
     const [player, setPlayer] = useState({});
@@ -27,6 +28,9 @@ function PanelRouter(props) {
             }
             { props.selectedTask["task_type"] == "MISSING TRANSFERMARKT_URL" &&
                 <MissingTransfermarktURLPanel remove={remove} player={player}/>
+            }
+            { props.selectedTask["task_type"] == "MISSING ORDB_ID" &&
+                <MissingOrdbIDPanel remove={remove} player={player}/>
             }
         </div>
     )

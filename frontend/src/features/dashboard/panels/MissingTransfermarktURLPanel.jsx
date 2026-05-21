@@ -10,7 +10,7 @@ function MissingTransfermarktURLPanel(props) {
     return (
         <div>
             Missing Transfermarkt_URL
-            <h4>{props.player["JP_name"]}</h4>
+            <h4>{props.player["EN_name"] == null ? props.player["JP_name"] : props.player["EN_name"]}</h4>
 
             <input text="text" id="transfermarkt_URL" name="url" placeholder="enter transfermarkt URL"/>
             <button type="submit" onClick={() => submit()}>submit</button>

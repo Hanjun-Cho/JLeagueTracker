@@ -15,6 +15,20 @@ export const submitTransfermarktURL = async(playerID, transfermarktURL) => {
     return res.data;
 };
 
+export const submitOrdbID = async(playerID, ordbID) => {
+    const res = await dashboard_api.patch(`/players/update_ordb_ID?id=${playerID}`, {
+        "ordb_id": ordbID
+    });
+    return res.data;
+};
+
+export const submitWyscoutID = async(playerID, wyscoutID) => {
+    const res = await dashboard_api.patch(`/players/update_ordb_ID?id=${playerID}`, {
+        "wyscoutID": wyscoutID 
+    });
+    return res.data;
+};
+
 export const removeTask = async(taskID) => {
     const res = await dashboard_api.delete(`/tasks/delete?id=${taskID}`);
     return res.data;

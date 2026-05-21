@@ -1,12 +1,13 @@
-from typing import List
+from typing import List, Optional
 import math
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from db.schemas import PlayerSchema
-from service.player_service import get_player, update_EN_Name, update_transfermarkt_URL
+from service.player_service import get_player, update_EN_Name, update_ordb_id, update_transfermarkt_URL
 from service.task_service import get_task_range, get_task_count, remove_task
 from db.schemas import TaskSchema
 from db.db import get_session
+from pydantic import BaseModel
 dashboard_router = APIRouter()
 
 PAGE_LIMIT = 30
@@ -43,6 +44,20 @@ def update_player_EN_Name(id: int, EN_name: str, db: Session = Depends(get_sessi
 @dashboard_router.put("/players/update_transfermarkt_URL", response_model=PlayerSchema)
 def update_player_transfermarkt_URL(id: int, URL: str, db: Session = Depends(get_session)) -> PlayerSchema:
     player = update_transfermarkt_URL(db, id, URL)
+    if player is None:
+        raise HTTPException(status_code=404, detail=f"Player with ID {id} not found")
+    else:
+        return player
+
+class ORDBPatch(BaseModel):
+    ordb_id: Optional[str] = None
+
+@dashboard_router.patch("/players/update_ordb_ID", response_model=PlayerSchema)
+def update_player_ordb_ID(id: int, data: ORDBPatch, db: Session = Depends(get_session)) -> PlayerSchema:
+    if data.ordb_id is None:
+        raise HTTPException(status_code=400, detail=f"ordb ID not found in request")
+
+    player = update_ordb_id(db, id, data.ordb_id)
     if player is None:
         raise HTTPException(status_code=404, detail=f"Player with ID {id} not found")
     else:

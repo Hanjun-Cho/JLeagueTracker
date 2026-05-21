@@ -1,3 +1,4 @@
+from datetime import date
 from typing import Optional
 from pydantic import BaseModel, ConfigDict
 
@@ -11,6 +12,9 @@ class PlayerSchema(BaseModel):
     team: str
     EN_name: Optional[str] = None 
     transfermarkt_URL: Optional[str] = None 
+    date_of_birth: Optional[date] = None
+    ordb_id: Optional[str] = None
+    wyscout_id: Optional[str] = None
 
 class TaskSchema(BaseModel):
     model_config = ConfigDict(from_attributes=True)
