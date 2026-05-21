@@ -1,82 +1,162 @@
 {
     "Kashima Antlers": {
         "injury_tracker": "http://soccer.phew.homeip.net/injury_news/team/?start=0&sort=position&team=%BC%AF%C5%E7",
-        "transfermarkt": "https://www.transfermarkt.com/kashima-antlers/startseite/verein/2241"
+        "transfermarkt": "https://www.transfermarkt.com/kashima-antlers/startseite/verein/2241",
+        "alternate_names": {
+            "wyscout": "Kashima Antlers",
+            "ordb": "Kashima Antlers"
+        }
     },
     "FC Tokyo": {
         "injury_tracker": "http://soccer.phew.homeip.net/injury_news/team/?start=0&sort=position&team=FC%C5%EC%B5%FE",
-        "transfermarkt": "https://www.transfermarkt.com/fc-tokyo/startseite/verein/6631"
+        "transfermarkt": "https://www.transfermarkt.com/fc-tokyo/startseite/verein/6631",
+        "alternate_names": {
+            "wyscout": "Tokyo",
+            "ordb": "FC Tokyo"
+        }
     },
     "FC Machida Zelvia": {
         "injury_tracker": "http://soccer.phew.homeip.net/injury_news/team/?start=0&sort=position&team=%C4%AE%C5%C4",
-        "transfermarkt": "https://www.transfermarkt.com/machida-zelvia/startseite/verein/23568"
+        "transfermarkt": "https://www.transfermarkt.com/machida-zelvia/startseite/verein/23568",
+        "alternate_names": {
+            "wyscout": "Machida Zelvia",
+            "ordb": "FC Machida Zelvia"
+        }
     },
     "Tokyo Verdy": {
         "injury_tracker": "http://soccer.phew.homeip.net/injury_news/team/?start=0&sort=position&team=%C5%EC%B5%FEV",
-        "transfermarkt": "https://www.transfermarkt.com/tokyo-verdy/startseite/verein/3734"
+        "transfermarkt": "https://www.transfermarkt.com/tokyo-verdy/startseite/verein/3734",
+        "alternate_names": {
+            "wyscout": "Tokyo Verdy",
+            "ordb": "Tokyo Verdy"
+        }
     },
     "Urawa Reds": {
         "injury_tracker": "http://soccer.phew.homeip.net/injury_news/team/?start=0&sort=position&team=%B1%BA%CF%C2",
-        "transfermarkt": "https://www.transfermarkt.com/urawa-red-diamonds/startseite/verein/828"
+        "transfermarkt": "https://www.transfermarkt.com/urawa-red-diamonds/startseite/verein/828",
+        "alternate_names": {
+            "wyscout": "Urawa Reds",
+            "ordb": "Urawa Reds"
+        }
     },
     "Kawasaki Frontale": {
         "injury_tracker": "http://soccer.phew.homeip.net/injury_news/team/?start=0&sort=position&team=%C0%EE%BA%EA",
-        "transfermarkt": "https://www.transfermarkt.com/kawasaki-frontale/startseite/verein/9598"
+        "transfermarkt": "https://www.transfermarkt.com/kawasaki-frontale/startseite/verein/9598",
+        "alternate_names": {
+            "wyscout": "Kawasaki Frontale",
+            "ordb": "Kawasaki Frontale"
+        }
     },
     "Mito Hollyhock": {
         "injury_tracker": "http://soccer.phew.homeip.net/injury_news/team/?start=0&sort=position&team=%BF%E5%B8%CD",
-        "transfermarkt": "https://www.transfermarkt.com/mito-hollyhock/startseite/verein/21975"
+        "transfermarkt": "https://www.transfermarkt.com/mito-hollyhock/startseite/verein/21975",
+        "alternate_names": {
+            "wyscout": "Mito Hollyhock",
+            "ordb": "Mito Hollyhock"
+        }
     },
     "Kashiwa Reysol": {
         "injury_tracker": "http://soccer.phew.homeip.net/injury_news/team/?start=0&sort=position&team=%C7%F0",
-        "transfermarkt": "https://www.transfermarkt.com/kashiwa-reysol/startseite/verein/6632"
+        "transfermarkt": "https://www.transfermarkt.com/kashiwa-reysol/startseite/verein/6632",
+        "alternate_names": {
+            "wyscout": "Kashiwa Reysol",
+            "ordb": "Kashiwa Reysol"
+        }
     },
     "Yokohama F. Marinos": {
         "injury_tracker": "http://soccer.phew.homeip.net/injury_news/team/?start=0&sort=position&team=%B2%A3%C9%CDFM",
-        "transfermarkt": "https://www.transfermarkt.com/yokohama-f-marinos/startseite/verein/3828"
+        "transfermarkt": "https://www.transfermarkt.com/yokohama-f-marinos/startseite/verein/3828",
+        "alternate_names": {
+            "wyscout": "Yokohama F. Marinos",
+            "ordb": "Yokohama F･Marinos"
+        }
     },
     "JEF United Chiba": {
         "injury_tracker": "http://soccer.phew.homeip.net/injury_news/team/?start=0&sort=position&team=%C0%E9%CD%D5",
-        "transfermarkt": "https://www.transfermarkt.com/jef-united-chiba/startseite/verein/672"
+        "transfermarkt": "https://www.transfermarkt.com/jef-united-chiba/startseite/verein/672",
+        "alternate_names": {
+            "wyscout": "JEF United",
+            "ordb": "JEF United Chiba"
+        }
     },
     "Nagoya Grampus": {
         "injury_tracker": "http://soccer.phew.homeip.net/injury_news/team/?start=0&sort=position&team=%CC%BE%B8%C5%B2%B0",
-        "transfermarkt": "https://www.transfermarkt.com/nagoya-grampus/startseite/verein/1066"
+        "transfermarkt": "https://www.transfermarkt.com/nagoya-grampus/startseite/verein/1066",
+        "alternate_names": {
+            "wyscout": "Nagoya Grampus",
+            "ordb": "Nagoya Grampus"
+        }
     },
     "Vissel Kobe": {
         "injury_tracker": "http://soccer.phew.homeip.net/injury_news/team/?start=0&sort=position&team=%BF%C0%B8%CD",
-        "transfermarkt": "https://www.transfermarkt.com/vissel-kobe/startseite/verein/3958"
+        "transfermarkt": "https://www.transfermarkt.com/vissel-kobe/startseite/verein/3958",
+        "alternate_names": {
+            "wyscout": "Vissel Kobe",
+            "ordb": "Vissel Kobe"
+        }
     },
     "Gamba Osaka": {
         "injury_tracker": "http://soccer.phew.homeip.net/injury_news/team/?start=0&sort=position&team=G%C2%E7%BA%E5",
-        "transfermarkt": "https://www.transfermarkt.com/gamba-osaka/startseite/verein/596"
+        "transfermarkt": "https://www.transfermarkt.com/gamba-osaka/startseite/verein/596",
+        "alternate_names": {
+            "wyscout": "Gamba Osaka",
+            "ordb": "Gamba Osaka"
+        }
     },
     "Cerezo Osaka": {
         "injury_tracker": "http://soccer.phew.homeip.net/injury_news/team/?start=0&sort=position&team=C%C2%E7%BA%E5",
-        "transfermarkt": "https://www.transfermarkt.com/cerezo-osaka/startseite/verein/1022"
+        "transfermarkt": "https://www.transfermarkt.com/cerezo-osaka/startseite/verein/1022",
+        "alternate_names": {
+            "wyscout": "Cerezo Osaka",
+            "ordb": "Cerezo Osaka"
+        }
     },
     "Sanfrecce Hiroshima": {
         "injury_tracker": "http://soccer.phew.homeip.net/injury_news/team/?start=0&sort=position&team=%B9%AD%C5%E7",
-        "transfermarkt": "https://www.transfermarkt.com/sanfrecce-hiroshima/startseite/verein/2697"
+        "transfermarkt": "https://www.transfermarkt.com/sanfrecce-hiroshima/startseite/verein/2697",
+        "alternate_names": {
+            "wyscout": "Sanfrecce Hiroshima",
+            "ordb": "Sanfrecce Hiroshima"
+        }
     },
     "Shimizu S-Pulse": {
         "injury_tracker": "http://soccer.phew.homeip.net/injury_news/team/?start=0&sort=position&team=%C0%B6%BF%E5",
-        "transfermarkt": "https://www.transfermarkt.com/shimizu-s-pulse/startseite/verein/1062"
+        "transfermarkt": "https://www.transfermarkt.com/shimizu-s-pulse/startseite/verein/1062",
+        "alternate_names": {
+            "wyscout": "Shimizu S-Pulse",
+            "ordb": "Shimizu S-Pulse"
+        }
     },
     "Fagiano Okayama": {
         "injury_tracker": "http://soccer.phew.homeip.net/injury_news/team/?start=0&sort=position&team=%B2%AC%BB%B3",
-        "transfermarkt": "https://www.transfermarkt.com/fagiano-okayama/startseite/verein/22171"
+        "transfermarkt": "https://www.transfermarkt.com/fagiano-okayama/startseite/verein/22171",
+        "alternate_names": {
+            "wyscout": "Fagiano Okayama",
+            "ordb": "Fagiano Okayama"
+        }
     },
     "Avispa Fukuoka": {
         "injury_tracker": "http://soccer.phew.homeip.net/injury_news/team/?start=0&sort=position&team=%CA%A1%B2%AC",
-        "transfermarkt": "https://www.transfermarkt.com/avispa-fukuoka/startseite/verein/9597"
+        "transfermarkt": "https://www.transfermarkt.com/avispa-fukuoka/startseite/verein/9597",
+        "alternate_names": {
+            "wyscout": "Avispa Fukuoka",
+            "ordb": "Avispa Fukuoka"
+        }
     },
     "Kyoto Sanga F.C.": {
         "injury_tracker": "http://soccer.phew.homeip.net/injury_news/team/?start=0&sort=position&team=%B5%FE%C5%D4",
-        "transfermarkt": "https://www.transfermarkt.com/kyoto-sanga/startseite/verein/593"
+        "transfermarkt": "https://www.transfermarkt.com/kyoto-sanga/startseite/verein/593",
+        "alternate_names": {
+            "wyscout": "",
+            "ordb": "Kyoto Sanga F.C."
+        }
     },
     "V-Varen Nagasaki": {
         "injury_tracker": "http://soccer.phew.homeip.net/injury_news/team/?start=0&sort=position&team=%C4%B9%BA%EA",
-        "transfermarkt": "https://www.transfermarkt.com/v-varen-nagasaki/startseite/verein/23581"
+        "transfermarkt": "https://www.transfermarkt.com/v-varen-nagasaki/startseite/verein/23581",
+        "alternate_names": {
+            "wyscout": "",
+            "ordb": "V-Varen Nagasaki"
+        }
     }
 }

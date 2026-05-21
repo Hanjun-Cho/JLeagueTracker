@@ -1,4 +1,3 @@
-from datetime import datetime
 from sqlalchemy.orm import Session
 from db.models import Player
 
@@ -18,10 +17,9 @@ def update_transfermarkt_URL(db: Session, id: int, transfermarkt_URL: str) -> Pl
         return player
     return None
 
-def update_dob(db: Session, id: int, dob: str) -> Player | None:
+def update_transfermarkt_URL(db: Session, id: int, transfermarkt_URL: str) -> Player | None:
     if player := get_player(db, id):
-        date_obj = datetime.strptime(dob, "%d/%m/%Y").date()
-        player.date_of_birth = date_obj 
+        player.transfermarkt_URL = transfermarkt_URL 
         db.commit()
         db.refresh(player)
         return player

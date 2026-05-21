@@ -1,5 +1,6 @@
 from typing import Optional
-from sqlalchemy import ForeignKey, String, Integer
+from datetime import date
+from sqlalchemy import ForeignKey, String, Integer, Date
 from sqlalchemy.orm import (
     DeclarativeBase,
     Mapped,
@@ -25,6 +26,7 @@ class Player(Base):
 
     EN_name: Mapped[Optional[str]] = mapped_column(String, nullable=True) 
     transfermarkt_URL: Mapped[Optional[str]] = mapped_column(String, nullable=True)
+    date_of_birth: Mapped[Optional[date]] = mapped_column(Date, nullable=True)
 
     tasks = relationship("Task", back_populates="player")
 

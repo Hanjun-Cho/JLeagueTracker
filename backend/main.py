@@ -1,14 +1,15 @@
+from db.models import Base
+from scraper.player import scrape_player_birthday
 from scraper.team_list import scrape_team_list
 from sqlalchemy.orm import Session
-from db.db import SessionLocal, get_session
+from db.db import get_session, engine
 from service.task_service import create_task, get_task, remove_task
 from scraper import player_list
 from scraper.main import load_teams
-from service.player_service import create_player, get_players_from_team, update_transfermarkt_URL
+from service.player_service import create_player, get_players_from_team, update_dob, update_transfermarkt_URL
 from fastapi import Depends, FastAPI
 from routes.dashboard import dashboard_router
 from fastapi.middleware.cors import CORSMiddleware
-
 
 app = FastAPI()
 app.include_router(dashboard_router, prefix="/dashboard")
@@ -24,6 +25,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+Base.metadata.create_all(engine)
 
 def load_all_players(db: Session = Depends(get_session)):
     teams = load_teams()
@@ -72,6 +75,21 @@ def load_transfermarkt(db: Session):
                 print(f"NO EN_NAME {player.JP_name}")
                 continue
 
+            if player.transfermarkt_URL is not None:
+                if player.date_of_birth is not None:
+                    continue
+
+                birthday = scrape_player_birthday(player.transfermarkt_URL)
+                update_dob(db, player.id, birthday)
+
+                task = get_task(db, {"name": f"{player.JP_name} is missing DATE OF BIRTH"})
+
+                if task:
+                    remove_task(db, task.id)
+
+                print(f"UPDATED DOB {player.JP_name} {player.EN_name} -> {birthday}")
+                continue
+
             url_key = player.EN_name + player.back_number
             if url_key in team_URLs:
                 update_transfermarkt_URL(db, player.id, team_URLs[url_key])
@@ -89,5 +107,18 @@ def load_transfermarkt(db: Session):
                     "player_id": player.id
                 }
                 create_task(db, task_data)
+
+                task_data = {
+                    "name": f"{player.JP_name} is missing DATE OF BIRTH",
+                    "task_type": "MISSING DATE_OF_BIRTH",
+                    "player_id": player.id
+                }
+                create_task(db, task_data)
                 print(f"X {player.JP_name} {player.EN_name}")
 
+def update():
+    db = next(get_session())
+    try:
+        load_transfermarkt(db)
+    finally:
+        db.close()
