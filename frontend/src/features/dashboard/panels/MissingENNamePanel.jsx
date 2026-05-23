@@ -3,8 +3,11 @@ import { submitEnName } from "../services/players.service"
 function MissingEnNamePanel(props) {
     const submit = async() => {
         var EnName = document.getElementById("EN_name").value
-        submitEnName(props.player["id"], EnName)
-        props.remove()
+
+        if (EnName.length > 0) {
+            submitEnName(props.player["id"], EnName)
+            props.remove()
+        }
     }
 
     return (

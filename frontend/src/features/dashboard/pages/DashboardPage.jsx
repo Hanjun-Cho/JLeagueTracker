@@ -26,7 +26,7 @@ function Dashboard() {
 
     return (
         <div className={styles.dashboard_container}>
-            <TaskList tasks={tasks} page={page} setPage={setPage} maxPageCount={maxPageCount} setSelectedTask={setSelectedTask}/>
+            <TaskList tasks={tasks} page={page} setPage={setPage} maxPageCount={maxPageCount} setSelectedTask={setSelectedTask} selectedTask={selectedTask}/>
             <PanelRouter update_tasks={update_tasks} selectedTask={selectedTask}/>
         </div>
     )

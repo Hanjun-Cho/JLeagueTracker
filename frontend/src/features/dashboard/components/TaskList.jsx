@@ -10,7 +10,7 @@ function TaskList(props) {
             </div>
             <div className={styles.task_list_card_container}>
                 {props.tasks.map((task) => {
-                    return <TaskListCard key={task.id} task_data={task} setSelectedTask={props.setSelectedTask}/>
+                    return <TaskListCard key={task.id} task_data={task} setSelectedTask={props.setSelectedTask} selectedTask={props.selectedTask}/>
                 })}
             </div>
             <TaskListPageSelector page={props.page} maxPageCount={props.maxPageCount} setPage={props.setPage}/>

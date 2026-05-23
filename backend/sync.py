@@ -1,6 +1,6 @@
 from fastapi import Depends 
 from service.player_service import create_player, get_player_link, update_ordb_id, update_wyscout_id
-from service.task_service import create_missing_EN_name_task, create_missing_dob_task, create_missing_ordb_id_task, create_missing_transfermarkt_URL_task
+from service.task_service import create_missing_EN_name_task, create_missing_dob_task, create_missing_ordb_id_task, create_missing_transfermarkt_URL_task, create_missing_wyscout_id_task, get_task, remove_task
 from scraper import player_list
 from scraper.main import load_teams
 from db.models import Base
@@ -22,6 +22,7 @@ def update_tasks(db: Session = Depends(get_session)):
             if player_obj.EN_name is None:
                 create_missing_EN_name_task(db, player_obj)
                 print(f"{player_obj.get_name()} missing EN_name")
+
             if player_obj.transfermarkt_URL is None:
                 create_missing_transfermarkt_URL_task(db, player_obj)
                 print(f"{player_obj.get_name()} missing transfermarkt URL")
@@ -33,6 +34,10 @@ def update_tasks(db: Session = Depends(get_session)):
             if player_obj.ordb_id is None:
                 create_missing_ordb_id_task(db, player_obj)
                 print(f"{player_obj.get_name()} missing ordb ID")
+
+            if player_obj.wyscout_id is None:
+                create_missing_wyscout_id_task(db, player_obj)
+                print(f"{player_obj.get_name()} missing wyscout ID")
 
 def link_ordb(db: Session = Depends(get_session)):
     import csv
@@ -64,7 +69,7 @@ def link_wyscout(db: Session = Depends(get_session)):
 
     teams = load_teams()
 
-    with open("Wyscout_J1.csv", "r", newline="", encoding="utf-8") as file:
+    with open("Wyscout_J1_25.csv", "r", newline="", encoding="utf-8") as file:
         reader = csv.DictReader(file)
 
         for row in reader:
@@ -73,7 +78,16 @@ def link_wyscout(db: Session = Depends(get_session)):
             team = get_team("wyscout", row["Team"], teams)
 
             if player := get_player_link(db, name, dob, team):
+                if player.wyscout_id is not None:
+                    print(f"PASS {name}")
+                    continue
                 update_wyscout_id(db, player.id, row["Wyscout id"])
+
+                task = create_missing_wyscout_id_task(db, player)
+
+                if task is not None:
+                    remove_task(db, task.id)
+
                 print(f"COMPLETED {name}")
             else:
                 if len(team) > 0:
@@ -88,10 +102,8 @@ def get_team(type: str, team: str, teams: list) -> str:
 def update():
     db = next(get_session())
     try:
-        link_ordb(db)
         link_wyscout(db)
-        update_tasks(db)
     finally:
         db.close()
 
-#update()
+update()

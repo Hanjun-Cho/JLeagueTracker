@@ -18,9 +18,9 @@ def update_transfermarkt_URL(db: Session, id: int, transfermarkt_URL: str) -> Pl
         return player
     return None
 
-def update_dob(db: Session, id: int, dob: str) -> Player | None:
+def update_dob(db: Session, id: int, dob: str, format: str = "%d/%m/%Y") -> Player | None:
     if player := get_player(db, id):
-        date_obj = datetime.strptime(dob, "%d/%m/%Y").date()
+        date_obj = datetime.strptime(dob, format).date()
         player.date_of_birth = date_obj 
         db.commit()
         db.refresh(player)

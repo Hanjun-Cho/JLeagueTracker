@@ -5,28 +5,39 @@ export const getPlayer = async(playerID) => {
     return res.data;
 };
 
-export const submitEnName = async(playerID, EnName) => {
-    const res = await dashboard_api.put(`/players/update_EN_name?id=${playerID}&EN_name=${EnName}`);
+const updatePlayer = async(playerID, data) => {
+    const res = await dashboard_api.patch(`/players/update_player?id=${playerID}`, data);
     return res.data;
+}
+
+export const submitEnName = async(playerID, EnName) => {
+    return updatePlayer(playerID, {
+        "EN_name": EnName
+    });
 };
 
 export const submitTransfermarktURL = async(playerID, transfermarktURL) => {
-    const res = await dashboard_api.put(`/players/update_transfermarkt_URL?id=${playerID}&URL=${transfermarktURL}`);
-    return res.data;
+    return updatePlayer(playerID, {
+        "transfermarkt_URL": transfermarktURL
+    });
 };
 
+export const submitDateofBirth = async(playerID, dob) => {
+    return updatePlayer(playerID, {
+        "dob": dob
+    });
+}
+
 export const submitOrdbID = async(playerID, ordbID) => {
-    const res = await dashboard_api.patch(`/players/update_ordb_ID?id=${playerID}`, {
+    return updatePlayer(playerID, {
         "ordb_id": ordbID
     });
-    return res.data;
 };
 
 export const submitWyscoutID = async(playerID, wyscoutID) => {
-    const res = await dashboard_api.patch(`/players/update_ordb_ID?id=${playerID}`, {
-        "wyscoutID": wyscoutID 
+    return updatePlayer(playerID, {
+        "wyscout_id": wyscoutID
     });
-    return res.data;
 };
 
 export const removeTask = async(taskID) => {

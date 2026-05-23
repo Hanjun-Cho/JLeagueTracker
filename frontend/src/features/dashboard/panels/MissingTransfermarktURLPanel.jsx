@@ -3,8 +3,11 @@ import { submitTransfermarktURL } from "../services/players.service"
 function MissingTransfermarktURLPanel(props) {
     const submit = async() => {
         var url = document.getElementById("transfermarkt_URL").value
-        submitTransfermarktURL(props.player["id"], url)
-        props.remove()
+
+        if (url.length > 0) {
+            submitTransfermarktURL(props.player["id"], url)
+            props.remove()
+        }
     }
 
     return (
