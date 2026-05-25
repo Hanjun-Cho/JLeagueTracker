@@ -65,4 +65,8 @@ def update_player(id: int, data: PlayerPatch, db: Session = Depends(get_session)
     if data.wyscout_id is not None:
         update_wyscout_id(db, id, data.wyscout_id)
 
-    return get_player(db, id)
+    if player := get_player(db, id):
+        db.commit()
+        return player
+
+    raise HTTPException(status_code=404, detail=f"Player with ID {id} not found")

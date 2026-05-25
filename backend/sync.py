@@ -1,3 +1,4 @@
+from service.team_service import create_team
 from fastapi import Depends 
 from service.player_service import create_player, get_player_link, update_ordb_id, update_wyscout_id
 from service.task_service import create_missing_EN_name_task, create_missing_dob_task, create_missing_ordb_id_task, create_missing_transfermarkt_URL_task, create_missing_wyscout_id_task, get_task, remove_task
@@ -39,6 +40,8 @@ def update_tasks(db: Session = Depends(get_session)):
                 create_missing_wyscout_id_task(db, player_obj)
                 print(f"{player_obj.get_name()} missing wyscout ID")
 
+    db.commit()
+
 def link_ordb(db: Session = Depends(get_session)):
     import csv
 
@@ -64,6 +67,8 @@ def link_ordb(db: Session = Depends(get_session)):
             else:
                 print(f"{count} unable to find {name} ({dob}, {team})")
 
+    db.commit()
+
 def link_wyscout(db: Session = Depends(get_session)):
     import csv
 
@@ -81,8 +86,8 @@ def link_wyscout(db: Session = Depends(get_session)):
                 if player.wyscout_id is not None:
                     print(f"PASS {name}")
                     continue
-                update_wyscout_id(db, player.id, row["Wyscout id"])
 
+                update_wyscout_id(db, player.id, row["Wyscout id"])
                 task = create_missing_wyscout_id_task(db, player)
 
                 if task is not None:
@@ -92,6 +97,8 @@ def link_wyscout(db: Session = Depends(get_session)):
             else:
                 if len(team) > 0:
                     print(f"unable to find {name} ({dob}, {team})")
+
+    db.commit()
                 
 def get_team(type: str, team: str, teams: list) -> str:
     for team_name in teams:
@@ -99,10 +106,19 @@ def get_team(type: str, team: str, teams: list) -> str:
             return team_name
     return ""
 
+def link_teams(db: Session = Depends(get_session)):
+    teams = load_teams()
+
+    for team_name in teams:
+        create_team(db, team_name, teams[team_name])
+        print(f"CREATED {team_name}")
+        
+    db.commit()
+
 def update():
     db = next(get_session())
     try:
-        link_wyscout(db)
+        link_teams(db)
     finally:
         db.close()
 

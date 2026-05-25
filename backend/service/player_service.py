@@ -5,16 +5,12 @@ from db.models import Player
 def update_EN_Name(db: Session, id: int, EN_name: str) -> Player | None:
     if player := get_player(db, id):
         player.EN_name = EN_name
-        db.commit()
-        db.refresh(player)
         return player
     return None
 
 def update_transfermarkt_URL(db: Session, id: int, transfermarkt_URL: str) -> Player | None:
     if player := get_player(db, id):
         player.transfermarkt_URL = transfermarkt_URL 
-        db.commit()
-        db.refresh(player)
         return player
     return None
 
@@ -22,24 +18,18 @@ def update_dob(db: Session, id: int, dob: str, format: str = "%d/%m/%Y") -> Play
     if player := get_player(db, id):
         date_obj = datetime.strptime(dob, format).date()
         player.date_of_birth = date_obj 
-        db.commit()
-        db.refresh(player)
         return player
     return None
 
 def update_ordb_id(db: Session, id: int, ordb_id: str) -> Player | None:
     if player := get_player(db, id):
         player.ordb_id = ordb_id 
-        db.commit()
-        db.refresh(player)
         return player
     return None
 
 def update_wyscout_id(db: Session, id: int, wyscout_id: str) -> Player | None:
     if player := get_player(db, id):
         player.wyscout_id = wyscout_id 
-        db.commit()
-        db.refresh(player)
         return player
     return None
 
@@ -70,6 +60,4 @@ def create_player(db: Session, player_data: dict) -> Player:
     ) 
 
     db.add(player)
-    db.commit()
-    db.refresh(player)
     return player

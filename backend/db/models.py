@@ -50,3 +50,20 @@ class Task(Base):
     player_id: Mapped[int] = mapped_column(Integer, ForeignKey("players.id"))
 
     player = relationship("Player", back_populates="tasks")
+
+class Team(Base):
+    __tablename__ = "teams"
+
+    id: Mapped[int] = mapped_column(
+        Integer,
+        primary_key=True,
+    )
+
+    JP_name: Mapped[str] = mapped_column(String)
+    EN_name: Mapped[str] = mapped_column(String)
+
+    injury_tracker_id = mapped_column(String)
+    transfermarkt = mapped_column(String)
+
+    wyscout_name = mapped_column(String)
+    ordb_name = mapped_column(String)

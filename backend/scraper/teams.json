@@ -1,162 +1,322 @@
 {
-    "Kashima Antlers": {
-        "injury_tracker": "http://soccer.phew.homeip.net/injury_news/team/?start=0&sort=position&team=%BC%AF%C5%E7",
-        "transfermarkt": "https://www.transfermarkt.com/kashima-antlers/startseite/verein/2241",
-        "alternate_names": {
-            "wyscout": "Kashima Antlers",
-            "ordb": "Kashima Antlers"
-        }
+    "Vegalta Sendai": {
+        "id": 6395,
+        "JP_name": "ベガルタ仙台",
+        "injury_tracker": "%C0%E7%C2%E6",
+        "wyscout_name": "Vegalta Sendai",
+        "ordb_name": "Vegalta Sendai",
+        "transfermarkt": "vegalta-sendai"
     },
-    "FC Tokyo": {
-        "injury_tracker": "http://soccer.phew.homeip.net/injury_news/team/?start=0&sort=position&team=FC%C5%EC%B5%FE",
-        "transfermarkt": "https://www.transfermarkt.com/fc-tokyo/startseite/verein/6631",
-        "alternate_names": {
-            "wyscout": "Tokyo",
-            "ordb": "FC Tokyo"
-        }
+    "Blaublitz Akita": {
+        "id": 23580,
+        "JP_name": "ブラウブリッツ秋田",
+        "injury_tracker": "%BD%A9%C5%C4",
+        "wyscout_name": "Blaublitz Akita",
+        "ordb_name": "Blaublitz Akita",
+        "transfermarkt": "blaublitz-akita"
     },
-    "FC Machida Zelvia": {
-        "injury_tracker": "http://soccer.phew.homeip.net/injury_news/team/?start=0&sort=position&team=%C4%AE%C5%C4",
-        "transfermarkt": "https://www.transfermarkt.com/machida-zelvia/startseite/verein/23568",
-        "alternate_names": {
-            "wyscout": "Machida Zelvia",
-            "ordb": "FC Machida Zelvia"
-        }
+    "Shonan Bellmare": {
+        "id": 8357,
+        "JP_name": "湘南ベルマーレ",
+        "injury_tracker": "%BE%C5%C6%EE",
+        "wyscout_name": "Shonan Bellmare",
+        "ordb_name": "Shonan Bellmare",
+        "transfermarkt": "shonan-bellmare"
     },
-    "Tokyo Verdy": {
-        "injury_tracker": "http://soccer.phew.homeip.net/injury_news/team/?start=0&sort=position&team=%C5%EC%B5%FEV",
-        "transfermarkt": "https://www.transfermarkt.com/tokyo-verdy/startseite/verein/3734",
-        "alternate_names": {
-            "wyscout": "Tokyo Verdy",
-            "ordb": "Tokyo Verdy"
-        }
+    "Yokohama FC": {
+        "id": 943,
+        "JP_name": "横浜ＦＣ",
+        "injury_tracker": "%B2%A3%C9%CDFC",
+        "wyscout_name": "Yokohama",
+        "ordb_name": "Yokohama FC",
+        "transfermarkt": "yokohama-fc"
     },
-    "Urawa Reds": {
-        "injury_tracker": "http://soccer.phew.homeip.net/injury_news/team/?start=0&sort=position&team=%B1%BA%CF%C2",
-        "transfermarkt": "https://www.transfermarkt.com/urawa-red-diamonds/startseite/verein/828",
-        "alternate_names": {
-            "wyscout": "Urawa Reds",
-            "ordb": "Urawa Reds"
-        }
+    "S.C. Sagamihara": {
+        "id": 23548,
+        "JP_name": "ＳＣ相模原",
+        "injury_tracker": "%C1%EA%CC%CF%B8%B6",
+        "wyscout_name": "Sagamihara",
+        "ordb_name": "S.C. Sagamihara",
+        "transfermarkt": "sc-sagamihara"
     },
-    "Kawasaki Frontale": {
-        "injury_tracker": "http://soccer.phew.homeip.net/injury_news/team/?start=0&sort=position&team=%C0%EE%BA%EA",
-        "transfermarkt": "https://www.transfermarkt.com/kawasaki-frontale/startseite/verein/9598",
-        "alternate_names": {
-            "wyscout": "Kawasaki Frontale",
-            "ordb": "Kawasaki Frontale"
-        }
+    "Thespa Gunma": {
+        "id": 22178,
+        "JP_name": "ザスパ群馬",
+        "injury_tracker": "%B7%B2%C7%CF",
+        "wyscout_name": "Thespa Gunma",
+        "ordb_name": "Thespa Gunma",
+        "transfermarkt": "thespakusatsu-gunma"
     },
-    "Mito Hollyhock": {
-        "injury_tracker": "http://soccer.phew.homeip.net/injury_news/team/?start=0&sort=position&team=%BF%E5%B8%CD",
-        "transfermarkt": "https://www.transfermarkt.com/mito-hollyhock/startseite/verein/21975",
-        "alternate_names": {
-            "wyscout": "Mito Hollyhock",
-            "ordb": "Mito Hollyhock"
-        }
+    "Montedio Yamagata": {
+        "id": 16190,
+        "JP_name": "モンテディオ山形",
+        "injury_tracker": "%BB%B3%B7%C1",
+        "wyscout_name": "Montedio Yamagata",
+        "ordb_name": "Montedio Yamagata",
+        "transfermarkt": "montedio-yamagata"
     },
-    "Kashiwa Reysol": {
-        "injury_tracker": "http://soccer.phew.homeip.net/injury_news/team/?start=0&sort=position&team=%C7%F0",
-        "transfermarkt": "https://www.transfermarkt.com/kashiwa-reysol/startseite/verein/6632",
-        "alternate_names": {
-            "wyscout": "Kashiwa Reysol",
-            "ordb": "Kashiwa Reysol"
-        }
+    "Tochigi City": {
+        "id": 29307,
+        "JP_name": "栃木シティＦＣ",
+        "injury_tracker": "%C6%CA%CC%DAC",
+        "wyscout_name": "Tochigi",
+        "ordb_name": "Tochigi City",
+        "transfermarkt": "tochigi-city"
     },
-    "Yokohama F. Marinos": {
-        "injury_tracker": "http://soccer.phew.homeip.net/injury_news/team/?start=0&sort=position&team=%B2%A3%C9%CDFM",
-        "transfermarkt": "https://www.transfermarkt.com/yokohama-f-marinos/startseite/verein/3828",
-        "alternate_names": {
-            "wyscout": "Yokohama F. Marinos",
-            "ordb": "Yokohama F･Marinos"
-        }
+    "Vanraure Hachinohe": {
+        "id": 35000,
+        "JP_name": "ヴァンラーレ八戸",
+        "injury_tracker": "%C8%AC%B8%CD",
+        "wyscout_name": "Vanraure Hachinohe",
+        "ordb_name": "Vanraure Hachinohe",
+        "transfermarkt": "vanraure-hachinohe"
     },
-    "JEF United Chiba": {
-        "injury_tracker": "http://soccer.phew.homeip.net/injury_news/team/?start=0&sort=position&team=%C0%E9%CD%D5",
-        "transfermarkt": "https://www.transfermarkt.com/jef-united-chiba/startseite/verein/672",
-        "alternate_names": {
-            "wyscout": "JEF United",
-            "ordb": "JEF United Chiba"
-        }
+    "Tochigi SC": {
+        "id": 22179,
+        "JP_name": "栃木ＳＣ",
+        "injury_tracker": "%C6%CA%CC%DASC",
+        "wyscout_name": "Tochigi SC",
+        "ordb_name": "Tochigi SC",
+        "transfermarkt": "tochigi-sc"
     },
-    "Nagoya Grampus": {
-        "injury_tracker": "http://soccer.phew.homeip.net/injury_news/team/?start=0&sort=position&team=%CC%BE%B8%C5%B2%B0",
-        "transfermarkt": "https://www.transfermarkt.com/nagoya-grampus/startseite/verein/1066",
-        "alternate_names": {
-            "wyscout": "Nagoya Grampus",
-            "ordb": "Nagoya Grampus"
-        }
+    "Ventforet Kofu": {
+        "id": 10999,
+        "JP_name": "ヴァンフォーレ甲府",
+        "injury_tracker": "%B9%C3%C9%DC",
+        "wyscout_name": "Ventforet Kofu",
+        "ordb_name": "Ventforet Kofu",
+        "transfermarkt": "ventforet-kofu"
     },
-    "Vissel Kobe": {
-        "injury_tracker": "http://soccer.phew.homeip.net/injury_news/team/?start=0&sort=position&team=%BF%C0%B8%CD",
-        "transfermarkt": "https://www.transfermarkt.com/vissel-kobe/startseite/verein/3958",
-        "alternate_names": {
-            "wyscout": "Vissel Kobe",
-            "ordb": "Vissel Kobe"
-        }
+    "Hokkaido Consadole Sapporo": {
+        "id": 16032,
+        "JP_name": "北海道コンサドーレ札幌",
+        "injury_tracker": "%BB%A5%CB%DA",
+        "wyscout_name": "Consadole Sapporo",
+        "ordb_name": "Hokkaido Consadole Sapporo",
+        "transfermarkt": "hokkaido-consadole-sapporo"
     },
-    "Gamba Osaka": {
-        "injury_tracker": "http://soccer.phew.homeip.net/injury_news/team/?start=0&sort=position&team=G%C2%E7%BA%E5",
-        "transfermarkt": "https://www.transfermarkt.com/gamba-osaka/startseite/verein/596",
-        "alternate_names": {
-            "wyscout": "Gamba Osaka",
-            "ordb": "Gamba Osaka"
-        }
+    "Iwaki FC": {
+        "id": 53668,
+        "JP_name": "いわきＦＣ",
+        "injury_tracker": "%A4%A4%A4%EF%A4%AD",
+        "wyscout_name": "Iwaki",
+        "ordb_name": "Iwaki FC",
+        "transfermarkt": "iwaki-fc"
     },
-    "Cerezo Osaka": {
-        "injury_tracker": "http://soccer.phew.homeip.net/injury_news/team/?start=0&sort=position&team=C%C2%E7%BA%E5",
-        "transfermarkt": "https://www.transfermarkt.com/cerezo-osaka/startseite/verein/1022",
-        "alternate_names": {
-            "wyscout": "Cerezo Osaka",
-            "ordb": "Cerezo Osaka"
-        }
+    "RB Omiya Ardija": {
+        "id": 7452,
+        "JP_name": "ＲＢ大宮アルディージャ",
+        "injury_tracker": "%C2%E7%B5%DC",
+        "wyscout_name": "RB Omiya Ardija",
+        "ordb_name": "RB Omiya Ardija",
+        "transfermarkt": "omiya-ardija"
     },
-    "Sanfrecce Hiroshima": {
-        "injury_tracker": "http://soccer.phew.homeip.net/injury_news/team/?start=0&sort=position&team=%B9%AD%C5%E7",
-        "transfermarkt": "https://www.transfermarkt.com/sanfrecce-hiroshima/startseite/verein/2697",
-        "alternate_names": {
-            "wyscout": "Sanfrecce Hiroshima",
-            "ordb": "Sanfrecce Hiroshima"
-        }
+    "Fujieda MYFC": {
+        "id": 25716,
+        "JP_name": "藤枝ＭＹＦＣ",
+        "injury_tracker": "%C6%A3%BB%DE",
+        "wyscout_name": "Fujieda MYFC",
+        "ordb_name": "Fujieda MYFC",
+        "transfermarkt": "fujieda-myfc"
     },
-    "Shimizu S-Pulse": {
-        "injury_tracker": "http://soccer.phew.homeip.net/injury_news/team/?start=0&sort=position&team=%C0%B6%BF%E5",
-        "transfermarkt": "https://www.transfermarkt.com/shimizu-s-pulse/startseite/verein/1062",
-        "alternate_names": {
-            "wyscout": "Shimizu S-Pulse",
-            "ordb": "Shimizu S-Pulse"
-        }
+    "FC Gifu": {
+        "id": 13600,
+        "JP_name": "ＦＣ岐阜",
+        "injury_tracker": "%B4%F4%C9%EC",
+        "wyscout_name": "Gifu",
+        "ordb_name": "FC Gifu",
+        "transfermarkt": "fc-gifu"
     },
-    "Fagiano Okayama": {
-        "injury_tracker": "http://soccer.phew.homeip.net/injury_news/team/?start=0&sort=position&team=%B2%AC%BB%B3",
-        "transfermarkt": "https://www.transfermarkt.com/fagiano-okayama/startseite/verein/22171",
-        "alternate_names": {
-            "wyscout": "Fagiano Okayama",
-            "ordb": "Fagiano Okayama"
-        }
+    "Matsumoto Yamaga F.C.": {
+        "id": 25765,
+        "JP_name": "松本山雅ＦＣ",
+        "injury_tracker": "%BE%BE%CB%DC",
+        "wyscout_name": "Matsumoto Yamaga",
+        "ordb_name": "Matsumoto Yamaga F.C.",
+        "transfermarkt": "matsumoto-yamaga"
     },
-    "Avispa Fukuoka": {
-        "injury_tracker": "http://soccer.phew.homeip.net/injury_news/team/?start=0&sort=position&team=%CA%A1%B2%AC",
-        "transfermarkt": "https://www.transfermarkt.com/avispa-fukuoka/startseite/verein/9597",
-        "alternate_names": {
-            "wyscout": "Avispa Fukuoka",
-            "ordb": "Avispa Fukuoka"
-        }
+    "Jubilo Iwata": {
+        "id": 937,
+        "JP_name": "ジュビロ磐田",
+        "injury_tracker": "%C8%D8%C5%C4",
+        "wyscout_name": "Júbilo Iwata",
+        "ordb_name": "Jubilo Iwata",
+        "transfermarkt": "jubilo-iwata"
     },
-    "Kyoto Sanga F.C.": {
-        "injury_tracker": "http://soccer.phew.homeip.net/injury_news/team/?start=0&sort=position&team=%B5%FE%C5%D4",
-        "transfermarkt": "https://www.transfermarkt.com/kyoto-sanga/startseite/verein/593",
-        "alternate_names": {
-            "wyscout": "",
-            "ordb": "Kyoto Sanga F.C."
-        }
+    "Fukushima United FC": {
+        "id": 28753,
+        "JP_name": "福島ユナイテッドＦＣ",
+        "injury_tracker": "%CA%A1%C5%E7",
+        "wyscout_name": "Fukushima United",
+        "ordb_name": "Fukushima United FC",
+        "transfermarkt": "fukushima-united"
     },
-    "V-Varen Nagasaki": {
-        "injury_tracker": "http://soccer.phew.homeip.net/injury_news/team/?start=0&sort=position&team=%C4%B9%BA%EA",
-        "transfermarkt": "https://www.transfermarkt.com/v-varen-nagasaki/startseite/verein/23581",
-        "alternate_names": {
-            "wyscout": "",
-            "ordb": "V-Varen Nagasaki"
-        }
+    "AC Nagano Parceiro": {
+        "id": 25738,
+        "JP_name": "ＡＣ長野パルセイロ",
+        "injury_tracker": "%C4%B9%CC%EE",
+        "wyscout_name": "Parceiro Nagano",
+        "ordb_name": "AC Nagano Parceiro",
+        "transfermarkt": "nagano-parceiro"
+    },
+    "Kataller Toyama": {
+        "id": 22173,
+        "JP_name": "カターレ富山",
+        "injury_tracker": "%C9%D9%BB%B3",
+        "wyscout_name": "Kataller Toyama",
+        "ordb_name": "Kataller Toyama",
+        "transfermarkt": "kataller-toyama"
+    },
+    "Albirex Niigata": {
+        "id": 8344,
+        "JP_name": "アルビレックス新潟",
+        "injury_tracker": "%BF%B7%B3%E3",
+        "wyscout_name": "Albirex Niigata",
+        "ordb_name": "Albirex Niigata",
+        "transfermarkt": "albirex-niigata"
+    },
+    "Tokushima Vortis": {
+        "id": 17832,
+        "JP_name": "徳島ヴォルティス",
+        "injury_tracker": "%C6%C1%C5%E7",
+        "wyscout_name": "Tokushima Vortis",
+        "ordb_name": "Tokushima Vortis",
+        "transfermarkt": "tokushima-vortis"
+    },
+    "Kochi United SC": {
+        "id": 55744,
+        "JP_name": "高知ユナイテッドＳＣ",
+        "injury_tracker": "%B9%E2%C3%CE",
+        "wyscout_name": "Kochi United",
+        "ordb_name": "Kochi United SC",
+        "transfermarkt": "kochi-united"
+    },
+    "Ehime FC": {
+        "id": 20682,
+        "JP_name": "愛媛ＦＣ",
+        "injury_tracker": "%B0%A6%C9%B2",
+        "wyscout_name": "Ehime",
+        "ordb_name": "Ehime FC",
+        "transfermarkt": "ehime-fc"
+    },
+    "Zweigen Kanazawa": {
+        "id": 24321,
+        "JP_name": "ツエーゲン金沢",
+        "injury_tracker": "%B6%E2%C2%F4",
+        "wyscout_name": "Zweigen Kanazawa",
+        "ordb_name": "Zweigen Kanazawa",
+        "transfermarkt": "zweigen-kanazawa"
+    },
+    "Nara Club": {
+        "id": 34997,
+        "JP_name": "奈良クラブ",
+        "injury_tracker": "%C6%E0%CE%C9",
+        "wyscout_name": "Nara Club",
+        "ordb_name": "Nara Club",
+        "transfermarkt": "nara-club"
+    },
+    "FC Osaka": {
+        "id": 29172,
+        "JP_name": "ＦＣ大阪",
+        "injury_tracker": "FC%C2%E7%BA%E5",
+        "wyscout_name": "Osaka",
+        "ordb_name": "FC Osaka",
+        "transfermarkt": "fc-osaka"
+    },
+    "FC Imabari": {
+        "id": 37689,
+        "JP_name": "ＦＣ今治",
+        "injury_tracker": "%BA%A3%BC%A3",
+        "wyscout_name": "Imabari",
+        "ordb_name": "FC Imabari",
+        "transfermarkt": "fc-imabari"
+    },
+    "Kamatamare Sanuki": {
+        "id": 28522,
+        "JP_name": "カマタマーレ讃岐",
+        "injury_tracker": "%BB%BE%B4%F4",
+        "wyscout_name": "Kamatamare Sanuki",
+        "ordb_name": "Kamatamare Sanuki",
+        "transfermarkt": "kamatamare-sanuki"
+    },
+    "Tegevajaro Miyazaki": {
+        "id": 50673,
+        "JP_name": "テゲバジャーロ宮崎",
+        "injury_tracker": "%B5%DC%BA%EA",
+        "wyscout_name": "Tegevajaro Miyazaki",
+        "ordb_name": "Tegevajaro Miyazaki",
+        "transfermarkt": "tegevajaro-miyazaki"
+    },
+    "Kagoshima United FC": {
+        "id": 42629,
+        "JP_name": "鹿児島ユナイテッドＦＣ",
+        "injury_tracker": "%BC%AF%BB%F9%C5%E7",
+        "wyscout_name": "Kagoshima United",
+        "ordb_name": "Kagoshima United FC",
+        "transfermarkt": "kagoshima-united"
+    },
+    "Sagan Tosu": {
+        "id": 22177,
+        "JP_name": "サガン鳥栖",
+        "injury_tracker": "%C4%BB%C0%B4",
+        "wyscout_name": "Sagan Tosu",
+        "ordb_name": "Sagan Tosu",
+        "transfermarkt": "sagan-tosu"
+    },
+    "Renofa Yamaguchi FC": {
+        "id": 28730,
+        "JP_name": "レノファ山口ＦＣ",
+        "injury_tracker": "%BB%B3%B8%FD",
+        "wyscout_name": "Renofa Yamaguchi",
+        "ordb_name": "Renofa Yamaguchi FC",
+        "transfermarkt": "renofa-yamaguchi"
+    },
+    "Roasso Kumamoto": {
+        "id": 22175,
+        "JP_name": "ロアッソ熊本",
+        "injury_tracker": "%B7%A7%CB%DC",
+        "wyscout_name": "Roasso Kumamoto",
+        "ordb_name": "Roasso Kumamoto",
+        "transfermarkt": "roasso-kumamoto"
+    },
+    "Gainare Tottori": {
+        "id": 20805,
+        "JP_name": "ガイナーレ鳥取",
+        "injury_tracker": "%C4%BB%BC%E8",
+        "wyscout_name": "Gainare Tottori",
+        "ordb_name": "Gainare Tottori",
+        "transfermarkt": "gainare-tottori"
+    },
+    "Oita Trinita": {
+        "id": 3935,
+        "JP_name": "大分トリニータ",
+        "injury_tracker": "%C2%E7%CA%AC",
+        "wyscout_name": "Oita Trinita",
+        "ordb_name": "Oita Trinita",
+        "transfermarkt": "oita-trinita"
+    },
+    "Reilac Shiga FC": {
+        "id": 23573,
+        "JP_name": "レイラック滋賀ＦＣ",
+        "injury_tracker": "%BC%A2%B2%EC",
+        "wyscout_name": "Reilac Shiga",
+        "ordb_name": "Reilac Shiga FC",
+        "transfermarkt": "mio-biwako-shiga"
+    },
+    "FC Ryukyu": {
+        "id": 23569,
+        "JP_name": "ＦＣ琉球",
+        "injury_tracker": "%CE%B0%B5%E5",
+        "wyscout_name": "Ryūkyū",
+        "ordb_name": "FC Ryukyu",
+        "transfermarkt": "fc-ryukyu"
+    },
+    "Giravanz Kitakyushu": {
+        "id": 23575,
+        "JP_name": "ギラヴァンツ北九州",
+        "injury_tracker": "%CB%CC%B6%E5%BD%A3",
+        "wyscout_name": "Giravanz Kitakyushu",
+        "ordb_name": "Giravanz Kitakyushu",
+        "transfermarkt": "giravanz-kitakyushu"
     }
 }

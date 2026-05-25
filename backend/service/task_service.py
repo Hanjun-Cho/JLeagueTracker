@@ -9,7 +9,6 @@ def remove_task(db: Session, id: int) -> Task | None:
 
     db.delete(task)
     db.commit()
-
     return task
 
 def get_task(db: Session, task_data: dict) -> Task | None:
@@ -39,8 +38,6 @@ def create_task_dict(db: Session, task_data: dict) -> Task:
     )
 
     db.add(task)
-    db.commit()
-    db.refresh(task)
     return task
 
 # ------ helpers ------
