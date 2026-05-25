@@ -1,8 +1,15 @@
 from db.models import Team
 from sqlalchemy.orm import Session
 
+def get_all_teams(db: Session) -> list:
+    return db.query(Team).all()
+
 def get_team(db: Session, id: int) -> Team | None:
     team = db.query(Team).filter(Team.id == id).first()
+    return team
+
+def get_team_by_name(db: Session, name: str) -> Team | None:
+    team = db.query(Team).filter(Team.EN_name == name).first();
     return team
 
 def create_team(db: Session, team_name: str, team_data: dict) -> Team:

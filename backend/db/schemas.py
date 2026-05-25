@@ -23,3 +23,10 @@ class TaskSchema(BaseModel):
     name: str
     task_type: str
     player_id: int
+
+class TeamSchema(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: int
+    JP_name: str
+    EN_name: str

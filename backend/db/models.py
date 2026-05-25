@@ -23,6 +23,7 @@ class Player(Base):
     position: Mapped[str] = mapped_column(String)
     back_number: Mapped[str] = mapped_column(String)
     team: Mapped[str] = mapped_column(String)
+    team_id: Mapped[int] = mapped_column(Integer, ForeignKey("teams.id"))
 
     EN_name: Mapped[Optional[str]] = mapped_column(String, nullable=True) 
     transfermarkt_URL: Mapped[Optional[str]] = mapped_column(String, nullable=True)
@@ -32,6 +33,7 @@ class Player(Base):
     wyscout_id: Mapped[Optional[str]] = mapped_column(String, nullable=True)
 
     tasks = relationship("Task", back_populates="player")
+    team_obj = relationship("Team", back_populates="player")
 
     def get_name(self):
         return self.JP_name if self.EN_name is None else self.EN_name
@@ -67,3 +69,5 @@ class Team(Base):
 
     wyscout_name = mapped_column(String)
     ordb_name = mapped_column(String)
+
+    player = relationship("Player", back_populates="team_obj")

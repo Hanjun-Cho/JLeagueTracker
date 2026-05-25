@@ -1,10 +1,11 @@
 from typing import List, Optional
 import math
+from service.team_service import get_all_teams
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from db.schemas import PlayerSchema
+from db.schemas import PlayerSchema, TeamSchema
 from service.player_service import get_player, update_EN_Name, update_dob, update_ordb_id, update_transfermarkt_URL, update_wyscout_id
-from service.task_service import get_task_range, get_task_count, remove_task
+from service.task_service import get_task_count_filtered, get_task_range, get_task_count, get_task_range_filtered, remove_task
 from db.schemas import TaskSchema
 from db.db import get_session
 from pydantic import BaseModel
@@ -13,15 +14,27 @@ dashboard_router = APIRouter()
 PAGE_LIMIT = 30
 
 @dashboard_router.get("/tasks", response_model=List[TaskSchema])
-def get_tasks(page: int = 1, db: Session = Depends(get_session)) -> list:
+def get_tasks(page: int = 1, filters: str = "", db: Session = Depends(get_session)) -> list:
+    filter_list = [int(id) for id in filters.split(",")] if len(filters) > 0 else []
     offset = PAGE_LIMIT * (page-1)
-    tasks = get_task_range(db, offset, PAGE_LIMIT)
-    return tasks
+
+    if len(filter_list) > 0:
+        tasks = get_task_range_filtered(db, offset, PAGE_LIMIT, filter_list)
+        return tasks
+    else:
+        tasks = get_task_range(db, offset, PAGE_LIMIT)
+        return tasks
 
 @dashboard_router.get("/tasks/max_page_count")
-def get_task_max_page_count(db: Session = Depends(get_session)) -> int:
-    count = get_task_count(db)
-    return math.ceil(count / PAGE_LIMIT)
+def get_task_max_page_count(filters: str = "", db: Session = Depends(get_session)) -> int:
+    filter_list = [int(id) for id in filters.split(",")] if len(filters) > 0 else []
+
+    if len(filter_list) > 0:
+        count = get_task_count_filtered(db, filter_list)
+        return math.ceil(count / PAGE_LIMIT)
+    else:
+        count = get_task_count(db)
+        return math.ceil(count / PAGE_LIMIT)
 
 @dashboard_router.delete("/tasks/delete", response_model=TaskSchema)
 def delete_task(id: int, db: Session = Depends(get_session)) -> TaskSchema:
@@ -70,3 +83,7 @@ def update_player(id: int, data: PlayerPatch, db: Session = Depends(get_session)
         return player
 
     raise HTTPException(status_code=404, detail=f"Player with ID {id} not found")
+
+@dashboard_router.get("/teams", response_model=List[TeamSchema])
+def get_teams(db: Session = Depends(get_session)) -> list:
+    return get_all_teams(db)

@@ -1,10 +1,10 @@
-from service.team_service import create_team
+from service.team_service import get_team_by_name
 from fastapi import Depends 
 from service.player_service import create_player, get_player_link, update_ordb_id, update_wyscout_id
-from service.task_service import create_missing_EN_name_task, create_missing_dob_task, create_missing_ordb_id_task, create_missing_transfermarkt_URL_task, create_missing_wyscout_id_task, get_task, remove_task
+from service.task_service import create_missing_EN_name_task, create_missing_dob_task, create_missing_ordb_id_task, create_missing_team_id_task, create_missing_transfermarkt_URL_task, create_missing_wyscout_id_task, get_task, remove_task
 from scraper import player_list
 from scraper.main import load_teams
-from db.models import Base
+from db.models import Base, Player
 from sqlalchemy.orm import Session
 from db.db import get_session, engine
 
@@ -106,19 +106,26 @@ def get_team(type: str, team: str, teams: list) -> str:
             return team_name
     return ""
 
-def link_teams(db: Session = Depends(get_session)):
-    teams = load_teams()
+def link_team_ids(db: Session = Depends(get_session)):
+    players = db.query(Player).all()
 
-    for team_name in teams:
-        create_team(db, team_name, teams[team_name])
-        print(f"CREATED {team_name}")
-        
+    for player in players:
+        team = get_team_by_name(db, player.team)
+
+        if team is None:
+            create_missing_team_id_task(db, player)
+            print(f"FAILED {player.EN_name}")
+            continue
+
+        player.team_id = team.id
+        print(f"COMPLETED {player.EN_name}")
+
     db.commit()
 
 def update():
     db = next(get_session())
     try:
-        link_teams(db)
+        link_team_ids(db)
     finally:
         db.close()
 

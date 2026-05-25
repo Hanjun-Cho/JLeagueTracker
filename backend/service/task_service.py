@@ -21,8 +21,14 @@ def get_all_tasks(db: Session) -> list:
 def get_task_range(db: Session, offset: int, limit: int) -> list:
     return db.query(Task).offset(offset).limit(limit).all()
 
+def get_task_range_filtered(db: Session, offset: int, limit: int, filter_list: list) -> list:
+    return db.query(Task).join(Task.player).filter(Player.team_id.in_(filter_list)).offset(offset).limit(limit).all()
+
 def get_task_count(db: Session) -> int:
     return db.query(Task).count()
+
+def get_task_count_filtered(db: Session, filter_list: list) -> int:
+    return db.query(Task).join(Task.player).filter(Player.team_id.in_(filter_list)).count()
 
 def create_task(db: Session, name: str, task_type: str, player_id: int) -> Task:
     return create_task_dict(db, { "name": name, "task_type": task_type, "player_id": player_id })
@@ -73,5 +79,12 @@ def create_missing_wyscout_id_task(db: Session, player: Player) -> Task:
     return create_task(db,
         f"{player.get_name()} is missing WYSCOUT ID",
         "MISSING WYSCOUT_ID",
+        player.id
+    )
+
+def create_missing_team_id_task(db: Session, player: Player) -> Task:
+    return create_task(db,
+        f"{player.get_name()} is missing TEAM ID",
+        "MISSING TEAM_ID",
         player.id
     )

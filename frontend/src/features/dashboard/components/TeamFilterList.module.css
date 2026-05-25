@@ -1,0 +1,18 @@
+.team_list_container {
+    min-height: 100dvh;
+    max-height: 100dvh;
+    display: grid;
+    grid-template-rows: 45px 1fr;
+    border-left: 1px solid black;
+}
+
+.team_list_header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightgray;
+}
+
+.team_list_card_container {
+    overflow-y: auto;
+}
