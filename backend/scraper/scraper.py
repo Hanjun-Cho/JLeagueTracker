@@ -8,12 +8,26 @@ def get_href(element):
     return ""
 
 def scrape_page(url, selector):
+    retries = 3
+
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
-        page = browser.new_page()
-        page.goto(url)
-        page.wait_for_selector(selector)
-        html = page.content()
-        soup = BeautifulSoup(html, "html.parser")
-        browser.close()
-    return soup
+
+        for attempt in range(retries):
+            page = browser.new_page()
+
+            try:
+                page.goto(url)
+                page.wait_for_selector(selector, timeout=10000)
+                html = page.content()
+                soup = BeautifulSoup(html, "html.parser")
+                page.close()
+                browser.close()
+                return soup
+            except Exception as e:
+                print(f"Attempt {attempt + 1} failed: {e}")
+                page.close()
+
+                if attempt == retries - 1:
+                    browser.close()
+                    raise

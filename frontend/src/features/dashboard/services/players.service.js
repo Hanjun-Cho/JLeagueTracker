@@ -24,7 +24,7 @@ export const submitTransfermarktURL = async(playerID, transfermarktURL) => {
 
 export const submitDateofBirth = async(playerID, dob) => {
     return updatePlayer(playerID, {
-        "dob": dob
+        "date_of_birth": dob
     });
 }
 

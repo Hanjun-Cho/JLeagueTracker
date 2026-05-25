@@ -12,6 +12,14 @@ def get_team_by_name(db: Session, name: str) -> Team | None:
     team = db.query(Team).filter(Team.EN_name == name).first();
     return team
 
+def get_team_by_alternate(db: Session, name: str, alt_type: str) -> Team | None:
+    if alt_type == "ordb":
+        team = db.query(Team).filter(Team.ordb_name == name).first();
+        return team
+    else:
+        team = db.query(Team).filter(Team.wyscout_name == name).first();
+        return team
+
 def create_team(db: Session, team_name: str, team_data: dict) -> Team:
     if team := get_team(db, team_data["id"]):
         return team

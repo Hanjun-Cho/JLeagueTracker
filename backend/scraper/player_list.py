@@ -1,9 +1,11 @@
 import re
+from db.models import Team
 from scraper.scraper import scrape_page, get_href
 
-def scrape_player_list(team: dict, team_name: str) -> list:
+def scrape_player_list(team: Team) -> list:
     players = []
-    soup = scrape_page(team['injury_tracker'], "#main_table tr")
+    url = f"http://soccer.phew.homeip.net/injury_news/team/?start=0&sort=position&team={team.injury_tracker_id}"
+    soup = scrape_page(url, "#main_table tr")
 
     player_table = soup.find("table", id="main_table")
     rows = player_table.find_all("tr")
@@ -31,7 +33,8 @@ def scrape_player_list(team: dict, team_name: str) -> list:
             "name": name_text,
             "position": position,
             "back_number": back_number,
-            "team": team_name
+            "team": team.EN_name,
+            "team_id": team.id
         }
 
         players.append(player)

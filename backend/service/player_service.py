@@ -37,9 +37,13 @@ def get_player(db: Session, id: int) -> Player | None:
     player = db.query(Player).filter(Player.id == id).first()
     return player
 
-def get_player_link(db: Session, name: str, dob: str, team: str) -> Player | None:
+def get_player_by_team_and_number(db: Session, team_id: str, back_number: str) -> Player | None:
+    player = db.query(Player).filter(Player.team_id == team_id, Player.back_number == back_number).first();
+    return player
+
+def get_player_link(db: Session, name: str, dob: str, team_id: str) -> Player | None:
     date_obj = datetime.strptime(dob, "%m/%d/%Y").date()
-    player = db.query(Player).filter(Player.EN_name == name and Player.date_of_birth == date_obj and Player.team == team).first()
+    player = db.query(Player).filter(Player.EN_name == name, Player.date_of_birth == date_obj, Player.team_id == team_id).first()
     return player
 
 def get_players_from_team(db: Session, team: str) -> list:
@@ -55,6 +59,7 @@ def create_player(db: Session, player_data: dict) -> Player:
         position=player_data["position"],
         back_number=player_data["back_number"],
         team=player_data["team"],
+        team_id=player_data["team_id"],
         EN_name=None,
         transfermarkt_URL=None
     ) 

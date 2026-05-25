@@ -39,6 +39,7 @@ def get_task_max_page_count(filters: str = "", db: Session = Depends(get_session
 @dashboard_router.delete("/tasks/delete", response_model=TaskSchema)
 def delete_task(id: int, db: Session = Depends(get_session)) -> TaskSchema:
     task = remove_task(db, id)
+    db.commit()
 
     if task is None:
         raise HTTPException(status_code=404, detail=f"Task with ID {id} not found")
