@@ -1,4 +1,4 @@
-import { submitOrdbID } from "../services/players.service"
+import { submitOrdbID } from "../../../services/players.service"
 
 function MissingOrdbIDPanel(props) {
     const submit = async() => {

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { getPlayer } from "../services/players.service";
+import { getPlayer } from "../../../services/players.service";
 import MissingEnNamePanel from "./MissingENNamePanel";
 import MissingTransfermarktURLPanel from "./MissingTransfermarktURLPanel";
 import PanelHeader from "./PanelHeader";
-import { removeTask } from "../services/players.service";
+import { removeTask } from "../../../services/tasks.service";
 import MissingOrdbIDPanel from "./MissingOrdbIDPanel";
 import MissingWyscoutIDPanel from "./MissingWyscoutIDPanel";
 import MissingBirthdayPanel from "./MissingBirthdayPanel";

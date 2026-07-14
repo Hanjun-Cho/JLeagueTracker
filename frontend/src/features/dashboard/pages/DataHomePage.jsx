@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getTeams } from "../services/teams.service"
+import { getTeams } from "../../../services/teams.service"
 import styles from "./DataHomePage.module.css"
 import ListFilter from "../../../components/ListFilter/ListFilter.jsx";
 

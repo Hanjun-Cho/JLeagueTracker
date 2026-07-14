@@ -1,4 +1,4 @@
-import { submitTransfermarktURL } from "../services/players.service"
+import { submitTransfermarktURL } from "../../../services/players.service"
 
 function MissingTransfermarktURLPanel(props) {
     const submit = async() => {

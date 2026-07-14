@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
-import { getTasks, getTasksMaxPageCount } from "../services/tasks.service"
+import { getTasks, getTasksMaxPageCount } from "../../../services/tasks.service"
 import TaskList from "../components/TaskList"
 import PanelRouter from "../panels/PanelRouter"
 import styles from "./DashboardPage.module.css"
-import { getTeams } from "../services/teams.service"
+import { getTeams } from "../../../services/teams.service"
 import ListFilter from "../../../components/ListFilter/ListFilter"
 
 function Dashboard() {

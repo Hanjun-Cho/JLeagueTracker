@@ -1,4 +1,4 @@
-import { submitDateofBirth } from "../services/players.service"
+import { submitDateofBirth } from "../../../services/players.service"
 
 function MissingBirthdayPanel(props) {
     const submit = async() => {

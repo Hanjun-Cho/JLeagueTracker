@@ -1,4 +1,4 @@
-import { submitEnName } from "../services/players.service"
+import { submitEnName } from "../../../services/players.service"
 
 function MissingEnNamePanel(props) {
     const submit = async() => {

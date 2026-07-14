@@ -1,4 +1,4 @@
-import { submitWyscoutID } from "../services/players.service"
+import { submitWyscoutID } from "../../../services/players.service"
 
 function MissingWyscoutIDPanel(props) {
     const submit = async() => {

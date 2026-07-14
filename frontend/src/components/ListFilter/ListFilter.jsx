@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./ListFilter.module.css";
 import ListFilterCard from "./ListFilterCard.jsx";
 
@@ -22,6 +22,14 @@ function ListFilter(props) {
             props.setParentSelection(new_list);
         }
     }
+
+    useEffect(() => {
+        if (props.options.length > 0 && props.isSingular) {
+            var default_val = props.options[0][props.id_key];
+            setSelectedOptions([default_val]);
+            props.setParentSelection(default_val);
+        }
+    }, [props.options]);
 
     return (
         <div className={styles.list_filter_container}>

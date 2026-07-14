@@ -39,8 +39,3 @@ export const submitWyscoutID = async(playerID, wyscoutID) => {
         "wyscout_id": wyscoutID
     });
 };
-
-export const removeTask = async(taskID) => {
-    const res = await dashboard_api.delete(`/tasks/delete?id=${taskID}`);
-    return res.data;
-}
