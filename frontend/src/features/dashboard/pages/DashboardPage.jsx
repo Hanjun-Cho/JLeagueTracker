@@ -3,8 +3,8 @@ import { getTasks, getTasksMaxPageCount } from "../services/tasks.service"
 import TaskList from "../components/TaskList"
 import PanelRouter from "../panels/PanelRouter"
 import styles from "./DashboardPage.module.css"
-import TeamFilterList from "../components/TeamFilterList"
 import { getTeams } from "../services/teams.service"
+import ListFilter from "../../../components/ListFilter/ListFilter"
 
 function Dashboard() {
     const [selectedTask, setSelectedTask] = useState({});
@@ -27,21 +27,8 @@ function Dashboard() {
 
         const newTasks = await getTasks(page, team_filters_flat);
         setTasks(newTasks);
-        
-        setSelectedTask({});
-    }
 
-    const toggleTeamFilter = (team_id) => {
-        // false means it is now no longer selected
-        // true means it is now selected
-        if (selectedTeamFilters.includes(team_id)) {
-            setSelectedTeamFilters(selectedTeamFilters => selectedTeamFilters.filter(id => id !== team_id));
-            return false;
-        }
-        else {
-            setSelectedTeamFilters(selectedTeamFilters => [...selectedTeamFilters, team_id]);
-            return true;
-        }
+        setSelectedTask({});
     }
 
     useEffect(() => {
@@ -53,7 +40,7 @@ function Dashboard() {
         <div className={styles.dashboard_container}>
             <TaskList tasks={tasks} page={page} setPage={setPage} maxPageCount={maxPageCount} setSelectedTask={setSelectedTask} selectedTask={selectedTask}/>
             <PanelRouter update_tasks={update_tasks} selectedTask={selectedTask}/>
-            <TeamFilterList teams={teams} toggleTeamFilter={toggleTeamFilter} update_tasks={update_tasks}/>
+            <ListFilter title="Teams" options={teams} isSingular={false} id_key="id" text_key="EN_name" setParentSelection={setSelectedTeamFilters}/>
         </div>
     )
 }

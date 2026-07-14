@@ -1,0 +1,36 @@
+.list_filter_container {
+    min-height: 100dvh;
+    max-height: 100dvh;
+    display: grid;
+    grid-template-rows: 45px 1fr;
+    border-left: 1px solid black;
+}
+
+.list_filter_header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightgray;
+}
+
+.list_filter_card_container {
+    overflow-y: auto;
+}
+
+.list_filter_card {
+    max-width: 100%;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 12px;
+    border: 1px solid black;
+    cursor: pointer;
+
+}
+
+.list_filter_card:hover {
+    background-color: lightblue;
+}
+
+.selected_list_filter_card {
+    background-color: lightblue;
+}
