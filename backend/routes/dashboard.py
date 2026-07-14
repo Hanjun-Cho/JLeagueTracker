@@ -4,7 +4,7 @@ from service.team_service import get_all_teams
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from db.schemas import PlayerSchema, TeamSchema
-from service.player_service import get_player, update_EN_Name, update_dob, update_ordb_id, update_transfermarkt_URL, update_wyscout_id
+from service.player_service import get_player, get_players_from_team, update_EN_Name, update_dob, update_ordb_id, update_transfermarkt_URL, update_wyscout_id
 from service.task_service import get_task_count_filtered, get_task_range, get_task_count, get_task_range_filtered, remove_task
 from db.schemas import TaskSchema
 from db.db import get_session
@@ -88,3 +88,7 @@ def update_player(id: int, data: PlayerPatch, db: Session = Depends(get_session)
 @dashboard_router.get("/teams", response_model=List[TeamSchema])
 def get_teams(db: Session = Depends(get_session)) -> list:
     return get_all_teams(db)
+
+@dashboard_router.get("/teams/squad", response_model=List[PlayerSchema])
+def get_squad(id: int, db: Session = Depends(get_session)) -> list:
+    return get_players_from_team(db, id);

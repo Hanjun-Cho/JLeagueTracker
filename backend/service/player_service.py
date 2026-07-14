@@ -46,8 +46,8 @@ def get_player_link(db: Session, name: str, dob: str, team_id: str) -> Player | 
     player = db.query(Player).filter(Player.EN_name == name, Player.date_of_birth == date_obj, Player.team_id == team_id).first()
     return player
 
-def get_players_from_team(db: Session, team: str) -> list:
-    return db.query(Player).filter(Player.team == team).all()
+def get_players_from_team(db: Session, team_id: int) -> list:
+    return db.query(Player).filter(Player.team_id == team_id).all()
 
 def create_player(db: Session, player_data: dict) -> Player:
     if player := get_player(db, player_data["id"]):

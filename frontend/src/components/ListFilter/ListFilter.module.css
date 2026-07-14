@@ -4,6 +4,7 @@
     display: grid;
     grid-template-rows: 45px 1fr;
     border-left: 1px solid black;
+    border-right: 1px solid black;
 }
 
 .list_filter_header {

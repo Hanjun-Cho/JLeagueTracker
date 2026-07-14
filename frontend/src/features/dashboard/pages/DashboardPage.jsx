@@ -20,6 +20,8 @@ function Dashboard() {
     }
 
     const update_tasks = async() => {
+        setSelectedTask({});
+
         const team_filters_flat = selectedTeamFilters.join(",");
 
         const maxPage = await getTasksMaxPageCount(team_filters_flat);
@@ -27,8 +29,6 @@ function Dashboard() {
 
         const newTasks = await getTasks(page, team_filters_flat);
         setTasks(newTasks);
-
-        setSelectedTask({});
     }
 
     useEffect(() => {
@@ -39,7 +39,11 @@ function Dashboard() {
     return (
         <div className={styles.dashboard_container}>
             <TaskList tasks={tasks} page={page} setPage={setPage} maxPageCount={maxPageCount} setSelectedTask={setSelectedTask} selectedTask={selectedTask}/>
-            <PanelRouter update_tasks={update_tasks} selectedTask={selectedTask}/>
+            <div>
+            { Object.keys(selectedTask).length > 0 &&
+                <PanelRouter update_tasks={update_tasks} selectedTask={selectedTask}/>
+            }
+            </div>
             <ListFilter title="Teams" options={teams} isSingular={false} id_key="id" text_key="EN_name" setParentSelection={setSelectedTeamFilters}/>
         </div>
     )
