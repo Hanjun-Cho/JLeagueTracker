@@ -1,4 +1,4 @@
 .data_home_container {
     display: grid;
-    grid-template-columns: 350px 400px auto;
+    grid-template-columns: 300px 300px auto;
 }
