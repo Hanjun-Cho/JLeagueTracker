@@ -12,10 +12,11 @@ function PanelRouter(props) {
     const [player, setPlayer] = useState({});
 
     useEffect(() => {
+        console.log(props.selectedTask);
         if (props.selectedTask["player_id"]) {
             getPlayer(props.selectedTask["player_id"]).then(setPlayer)
         }
-    }, [props.selectedTask["player_id"]])
+    }, [props.selectedTask])
 
     const remove = async() => {
         removeTask(props.selectedTask["id"])

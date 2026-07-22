@@ -46,7 +46,9 @@ function Dashboard() {
             setTasks(newTasks);
         }
         catch (err) {
-            if (err.code == "ERR_CANCELLED") return;
+            if (err.code === "ERR_CANCELED") {
+                return;
+            }
             throw err;
         }
     }

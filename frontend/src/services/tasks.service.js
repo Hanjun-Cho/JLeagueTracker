@@ -5,6 +5,11 @@ export const getTasks = async (page, teamFiltersFlat, taskFiltersFlat, signal) =
     return res.data;
 };
 
+export const getTask = async (taskID, signal) => {
+    const res = await dashboard_api.get(`/task?id=${taskID}`, signal);
+    return res.data;
+}
+
 export const getTaskFilters = async() => {
     const res = await dashboard_api.get('/tasks/filters');
     return res.data;

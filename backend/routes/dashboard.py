@@ -5,7 +5,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from db.schemas import PlayerSchema, TeamSchema
 from service.player_service import get_player, get_players_from_team, update_EN_Name, update_dob, update_ordb_id, update_transfermarkt_URL, update_wyscout_id
-from service.task_service import get_task_count_filtered, get_task_range_filtered, remove_task
+from service.task_service import get_task_by_id, get_task_count_filtered, get_task_range_filtered, remove_task
 from db.schemas import TaskSchema
 from db.db import get_session
 from pydantic import BaseModel
@@ -20,6 +20,15 @@ def get_tasks(page: int = 1, team_filters: str = "", task_type_filters: str = ""
     task_type_filter_list = [id for id in task_type_filters.split(",")] if len(task_type_filters) > 0 else []
     tasks = get_task_range_filtered(db, offset, PAGE_LIMIT, team_filter_list, task_type_filter_list)
     return tasks
+
+@dashboard_router.get("/task", response_model=TaskSchema)
+def get_task(id: int, db: Session = Depends(get_session)) -> TaskSchema:
+    task = get_task_by_id(db, id)
+
+    if task is None:
+        raise HTTPException(status_code=404, detail=f"Task with ID {id} not found")
+    else:
+        return task
 
 @dashboard_router.get("/tasks/filters", response_model=List[dict])
 def get_task_filters() -> list:

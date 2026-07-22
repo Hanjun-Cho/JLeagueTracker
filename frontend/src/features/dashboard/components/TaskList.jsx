@@ -1,13 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ListFilter from "../../../components/ListFilter/ListFilter";
 import filterIcon from "./../../../assets/icons/icons_filter.svg";
 import styles from "./TaskList.module.css"
 import TaskListPageSelector from "./TaskListPageSelector";
-import { getTaskFilters } from "../../../services/tasks.service";
+import { getTask, getTaskFilters } from "../../../services/tasks.service";
 
 function TaskList(props) {
     const [taskFilters, setTaskFilters] = useState([]);
     const [showFilters, setShowFilters] = useState(false);
+    const controller = useRef(null);
 
     const toggleFilters = () => {
         setShowFilters(!showFilters);
@@ -20,6 +21,26 @@ function TaskList(props) {
         }
         getFilters()
     }, []);
+
+    const selectTask = async(taskID) => {
+        console.log(taskID);
+        controller.current?.abort();
+        controller.current = new AbortController();
+        props.setSelectedTask({});
+
+        try {
+            const task = await getTask(taskID, {
+                signal: controller.current.signal,
+            });
+            props.setSelectedTask(task);
+        }
+        catch (err) {
+            if (err === "ERR_CANCELED") {
+                return;
+            }
+            throw err;
+        }
+    }
 
     return (
         <div className={styles.task_list_container}>
@@ -34,7 +55,7 @@ function TaskList(props) {
                     <ListFilter removeHeader={true} options={taskFilters} isSingular={false} id_key='id' text_key='display' setParentSelection={props.setSelectedTaskFilters}/>
                 </div>
             </div>
-            <ListFilter removeHeader={true} options={props.tasks} isSingular={true} id_key='id' text_key="name" setParentSelection={props.setSelectedTask}/>
+            <ListFilter removeHeader={true} options={props.tasks} isSingular={true} id_key='id' text_key="name" setParentSelection={selectTask}/>
             <TaskListPageSelector page={props.page} maxPageCount={props.maxPageCount} setPage={props.setPage}/>
         </div>
     )
