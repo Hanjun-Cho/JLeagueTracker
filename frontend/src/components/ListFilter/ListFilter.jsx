@@ -29,13 +29,17 @@ function ListFilter(props) {
             setSelectedOptions([default_val]);
             props.setParentSelection(default_val);
         }
+
+        console.log(styles)
     }, [props.options]);
 
     return (
-        <div className={styles.list_filter_container}>
-            <div className={styles.list_filter_header}>
-                <h3>{props.title}</h3>
-            </div>
+        <div className={props.removeHeader ? styles.list_filter_container_headerless : styles.list_filter_container}>
+            { !props.removeHeader &&
+                <div className={styles.list_filter_header}>
+                    <h3>{props.title}</h3>
+                </div>
+            }
             <div className={styles.list_filter_card_container}>
                 { props.options.map((option) => {
                     var id = option[props.id_key]
