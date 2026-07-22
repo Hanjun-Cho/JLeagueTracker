@@ -44,8 +44,12 @@ function DataHomePage() {
 
     return (
         <div className={styles.data_home_container}>
-            <ListFilter title="Teams" options={teams} isSingular={true} id_key="id" text_key="EN_name" setParentSelection={setSelectedTeam}/>
-            <ListFilter title="Squad" options={squad} isSingular={true} id_key="id" text_key="EN_name" setParentSelection={setSelectedPlayerID}/>
+            <div className={styles.team_filter_container}>
+                <ListFilter title="Teams" options={teams} isSingular={true} id_key="id" text_key="EN_name" setParentSelection={setSelectedTeam}/>
+            </div>
+            <div className={styles.squad_filter_container}>
+                <ListFilter title="Squad" options={squad} isSingular={true} id_key="id" text_key="EN_name" setParentSelection={setSelectedPlayerID}/>
+            </div>
             <PlayerInformationPanel player={selectedPlayer}/>
         </div>
     )

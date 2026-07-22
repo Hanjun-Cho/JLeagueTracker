@@ -2,3 +2,8 @@
     display: grid;
     grid-template-columns: 400px auto 350px;
 }
+
+.team_filter_container {
+    min-height: 100dvh;
+    max-height: 100dvh;
+}

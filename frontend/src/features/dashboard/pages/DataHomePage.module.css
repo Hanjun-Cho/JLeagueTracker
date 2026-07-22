@@ -2,3 +2,13 @@
     display: grid;
     grid-template-columns: 300px 300px auto;
 }
+
+.team_filter_container {
+    min-height: 100dvh;
+    max-height: 100dvh;
+}
+
+.squad_filter_container {
+    min-height: 100dvh;
+    max-height: 100dvh;
+}

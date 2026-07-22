@@ -44,7 +44,9 @@ function Dashboard() {
                 <PanelRouter update_tasks={update_tasks} selectedTask={selectedTask}/>
             }
             </div>
-            <ListFilter title="Teams" options={teams} isSingular={false} id_key="id" text_key="EN_name" setParentSelection={setSelectedTeamFilters}/>
+            <div className={styles.team_filter_container}>
+                <ListFilter title="Teams" options={teams} isSingular={false} id_key="id" text_key="EN_name" setParentSelection={setSelectedTeamFilters}/>
+            </div>
         </div>
     )
 }

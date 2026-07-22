@@ -2,7 +2,7 @@
     min-height: 100dvh;
     max-height: 100dvh;
     display: grid;
-    grid-template-rows: 45px 1fr 45px;
+    grid-template-rows: auto 45px;
     border-right: 1px solid black;
 }
 
