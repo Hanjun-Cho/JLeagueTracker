@@ -6,9 +6,11 @@
 .team_filter_container {
     min-height: 100dvh;
     max-height: 100dvh;
+    border-right: 1px solid black;
 }
 
 .squad_filter_container {
     min-height: 100dvh;
     max-height: 100dvh;
+    border-right: 1px solid black;
 }

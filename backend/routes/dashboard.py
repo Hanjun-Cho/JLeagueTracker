@@ -5,7 +5,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from db.schemas import PlayerSchema, TeamSchema
 from service.player_service import get_player, get_players_from_team, update_EN_Name, update_dob, update_ordb_id, update_transfermarkt_URL, update_wyscout_id
-from service.task_service import get_task_count_filtered, get_task_range, get_task_count, get_task_range_filtered, remove_task
+from service.task_service import get_task_count_filtered, get_task_range_filtered, remove_task
 from db.schemas import TaskSchema
 from db.db import get_session
 from pydantic import BaseModel
@@ -14,27 +14,37 @@ dashboard_router = APIRouter()
 PAGE_LIMIT = 30
 
 @dashboard_router.get("/tasks", response_model=List[TaskSchema])
-def get_tasks(page: int = 1, filters: str = "", db: Session = Depends(get_session)) -> list:
-    filter_list = [int(id) for id in filters.split(",")] if len(filters) > 0 else []
+def get_tasks(page: int = 1, team_filters: str = "", task_type_filters: str = "", db: Session = Depends(get_session)) -> list:
     offset = PAGE_LIMIT * (page-1)
+    team_filter_list = [int(id) for id in team_filters.split(",")] if len(team_filters) > 0 else []
+    task_type_filter_list = [id for id in task_type_filters.split(",")] if len(task_type_filters) > 0 else []
+    tasks = get_task_range_filtered(db, offset, PAGE_LIMIT, team_filter_list, task_type_filter_list)
+    return tasks
 
-    if len(filter_list) > 0:
-        tasks = get_task_range_filtered(db, offset, PAGE_LIMIT, filter_list)
-        return tasks
-    else:
-        tasks = get_task_range(db, offset, PAGE_LIMIT)
-        return tasks
+@dashboard_router.get("/tasks/filters", response_model=List[dict])
+def get_task_filters() -> list:
+    return [
+        {
+            'id': "MISSING WYSCOUT_ID",
+            'display': "missing wyscout ID"
+        },
+        {
+            'id': "MISSING ORDB_ID",
+            'display': "missing ordb ID"
+        },
+        {
+            'id': "MISSING TRANSFERMARKT_URL",
+            'display': "missing transfermarkt URL"
+        }
+    ]
 
 @dashboard_router.get("/tasks/max_page_count")
-def get_task_max_page_count(filters: str = "", db: Session = Depends(get_session)) -> int:
-    filter_list = [int(id) for id in filters.split(",")] if len(filters) > 0 else []
-
-    if len(filter_list) > 0:
-        count = get_task_count_filtered(db, filter_list)
-        return math.ceil(count / PAGE_LIMIT)
-    else:
-        count = get_task_count(db)
-        return math.ceil(count / PAGE_LIMIT)
+def get_task_max_page_count(team_filters: str = "", task_type_filters: str = "", db: Session = Depends(get_session)) -> int:
+    team_filters_list = [int(id) for id in team_filters.split(",")] if len(team_filters) > 0 else []
+    task_type_filters_list = [id for id in task_type_filters.split(",")] if len(task_type_filters) > 0 else []
+    
+    count = get_task_count_filtered(db, team_filters_list, task_type_filters_list)
+    return math.ceil(count / PAGE_LIMIT)
 
 @dashboard_router.delete("/tasks/delete", response_model=TaskSchema)
 def delete_task(id: int, db: Session = Depends(get_session)) -> TaskSchema:

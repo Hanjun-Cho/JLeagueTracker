@@ -29,8 +29,6 @@ function ListFilter(props) {
             setSelectedOptions([default_val]);
             props.setParentSelection(default_val);
         }
-
-        console.log(styles)
     }, [props.options]);
 
     return (

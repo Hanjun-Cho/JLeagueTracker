@@ -2,17 +2,54 @@
     min-height: 100dvh;
     max-height: 100dvh;
     display: grid;
-    grid-template-rows: 90px auto 45px;
+    grid-template-rows: 45px auto 45px;
     border-right: 1px solid black;
 }
 
 .task_list_header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     background-color: lightgray;
+    border-bottom: 1px solid black;
+    display: grid;
+    grid-template-columns: auto 45px;
+}
+
+.task_list_header_text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    > h3 {
+        margin: 0;
+    }
+}
+
+.task_list_filter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    > img {
+        transform: scale(0.8);
+    }
+}
+
+.task_list_filter:hover {
+    background-color: gray;
+    cursor: pointer;
+}
+
+.task_list_filter_dropdown {
+    position: absolute;
+    background-color: white;
+    text-align: center;
+    border-right: 1px solid black;
+    left: 400px;
 }
 
 .task_list_card_container {
     overflow-y: auto;
+}
+
+.hidden {
+    display: none;
 }

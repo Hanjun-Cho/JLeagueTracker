@@ -17,17 +17,27 @@ def get_task(db: Session, task_data: dict) -> Task | None:
 def get_all_tasks(db: Session) -> list:
     return db.query(Task).all()
 
-def get_task_range(db: Session, offset: int, limit: int) -> list:
-    return db.query(Task).offset(offset).limit(limit).all()
+def get_task_range_filtered(db: Session, offset: int, limit: int, team_filter_list: list, task_type_filter_list: list) -> list:
+    query = db.query(Task).join(Task.player)
 
-def get_task_range_filtered(db: Session, offset: int, limit: int, filter_list: list) -> list:
-    return db.query(Task).join(Task.player).filter(Player.team_id.in_(filter_list)).offset(offset).limit(limit).all()
+    if len(task_type_filter_list) > 0:
+        query = query.filter(Task.task_type.in_(task_type_filter_list))
 
-def get_task_count(db: Session) -> int:
-    return db.query(Task).count()
+    if len(team_filter_list) > 0:
+        query = query.filter(Player.team_id.in_(team_filter_list))
 
-def get_task_count_filtered(db: Session, filter_list: list) -> int:
-    return db.query(Task).join(Task.player).filter(Player.team_id.in_(filter_list)).count()
+    return query.offset(offset).limit(limit).all()
+
+def get_task_count_filtered(db: Session, team_filter_list: list, task_type_filter_list: list) -> int:
+    query = db.query(Task).join(Task.player)
+
+    if len(task_type_filter_list) > 0:
+        query = query.filter(Task.task_type.in_(task_type_filter_list))
+
+    if len(team_filter_list) > 0:
+        query = query.filter(Player.team_id.in_(team_filter_list))
+
+    return query.count()
 
 def create_task(db: Session, name: str, task_type: str, player_id: int) -> Task:
     return create_task_dict(db, { "name": name, "task_type": task_type, "player_id": player_id })

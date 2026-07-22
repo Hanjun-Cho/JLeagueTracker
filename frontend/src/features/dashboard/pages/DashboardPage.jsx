@@ -9,6 +9,7 @@ import ListFilter from "../../../components/ListFilter/ListFilter"
 function Dashboard() {
     const [selectedTask, setSelectedTask] = useState({});
     const [selectedTeamFilters, setSelectedTeamFilters] = useState([]);
+    const [selectedTaskFilters, setSelectedTaskFilters] = useState([]);
     const [tasks, setTasks] = useState([]);
     const [teams, setTeams] = useState([]);
     const [page, setPage] = useState(1);
@@ -23,22 +24,23 @@ function Dashboard() {
         setSelectedTask({});
 
         const team_filters_flat = selectedTeamFilters.join(",");
+        const task_filters_flat = selectedTaskFilters.join(",");
 
-        const maxPage = await getTasksMaxPageCount(team_filters_flat);
+        const maxPage = await getTasksMaxPageCount(team_filters_flat, task_filters_flat);
         setMaxPageCount(maxPage);
 
-        const newTasks = await getTasks(page, team_filters_flat);
+        const newTasks = await getTasks(page, team_filters_flat, task_filters_flat);
         setTasks(newTasks);
     }
 
     useEffect(() => {
         update_tasks();
         get_teams();
-    }, [page, selectedTeamFilters]);
+    }, [page, selectedTeamFilters, selectedTaskFilters]);
 
     return (
         <div className={styles.dashboard_container}>
-            <TaskList tasks={tasks} page={page} setPage={setPage} maxPageCount={maxPageCount} setSelectedTask={setSelectedTask} selectedTask={selectedTask}/>
+            <TaskList tasks={tasks} page={page} setPage={setPage} maxPageCount={maxPageCount} setSelectedTask={setSelectedTask} selectedTask={selectedTask} setSelectedTaskFilters={setSelectedTaskFilters}/>
             <div>
             { Object.keys(selectedTask).length > 0 &&
                 <PanelRouter update_tasks={update_tasks} selectedTask={selectedTask}/>
