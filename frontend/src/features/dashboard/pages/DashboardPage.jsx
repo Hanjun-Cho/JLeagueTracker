@@ -29,13 +29,20 @@ function Dashboard() {
         const maxPage = await getTasksMaxPageCount(team_filters_flat, task_filters_flat);
         setMaxPageCount(maxPage);
 
+        if (page > maxPage) {
+            setPage(maxPage)
+        }
+
         const newTasks = await getTasks(page, team_filters_flat, task_filters_flat);
         setTasks(newTasks);
     }
 
     useEffect(() => {
-        update_tasks();
         get_teams();
+    }, []);
+
+    useEffect(() => {
+        update_tasks();
     }, [page, selectedTeamFilters, selectedTaskFilters]);
 
     return (

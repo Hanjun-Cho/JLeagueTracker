@@ -1,11 +1,15 @@
 import styles from "./TaskListPageSelector.module.css"
 import nextIcon from "./../../../assets/icons/icons_next.svg"
 import jumpIcon from "./../../../assets/icons/icons_jump.svg"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function TaskListPageSelector(props) {
     const [start, setStart] = useState(props.page);
     const jumpIncrement = 5;
+    
+    useEffect(() => {
+        setStart(props.page);
+    }, [props.maxPageCount]);
 
     const revertPage = (increment) => {
         if (props.page <= increment) {

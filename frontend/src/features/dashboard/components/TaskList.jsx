@@ -10,7 +10,6 @@ function TaskList(props) {
     const [showFilters, setShowFilters] = useState(false);
 
     const toggleFilters = () => {
-        console.log("test")
         setShowFilters(!showFilters);
     }
 
