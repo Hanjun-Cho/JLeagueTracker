@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { getTasks, getTasksMaxPageCount } from "../../../services/tasks.service"
 import TaskList from "../components/TaskList"
 import PanelRouter from "../panels/PanelRouter"
@@ -14,6 +14,7 @@ function Dashboard() {
     const [teams, setTeams] = useState([]);
     const [page, setPage] = useState(1);
     const [maxPageCount, setMaxPageCount] = useState(0);
+    const controller = useRef(null);
 
     const get_teams = async() => {
         const teams = await getTeams();
@@ -21,20 +22,33 @@ function Dashboard() {
     }
 
     const update_tasks = async() => {
-        setSelectedTask({});
+        controller.current?.abort();
+        controller.current = new AbortController();
 
+        setSelectedTask({});
+        setTasks([]);
         const team_filters_flat = selectedTeamFilters.join(",");
         const task_filters_flat = selectedTaskFilters.join(",");
 
-        const maxPage = await getTasksMaxPageCount(team_filters_flat, task_filters_flat);
-        setMaxPageCount(maxPage);
+        try {
+            const maxPage = await getTasksMaxPageCount(team_filters_flat, task_filters_flat, {
+                signal: controller.current.signal,
+            });
+            setMaxPageCount(maxPage);
 
-        if (page > maxPage) {
-            setPage(maxPage)
+            if (page > maxPage) {
+                setPage(maxPage)
+            }
+
+            const newTasks = await getTasks(page, team_filters_flat, task_filters_flat, {
+                signal: controller.current.signal,
+            });
+            setTasks(newTasks);
         }
-
-        const newTasks = await getTasks(page, team_filters_flat, task_filters_flat);
-        setTasks(newTasks);
+        catch (err) {
+            if (err.code == "ERR_CANCELLED") return;
+            throw err;
+        }
     }
 
     useEffect(() => {
