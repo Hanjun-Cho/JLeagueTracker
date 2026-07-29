@@ -66,6 +66,7 @@ class Team(Base):
 
     injury_tracker_id = mapped_column(String)
     transfermarkt = mapped_column(String)
+    jleague = mapped_column(String)
 
     wyscout_name = mapped_column(String)
     ordb_name = mapped_column(String)

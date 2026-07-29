@@ -1,5 +1,5 @@
-from scraper.team_list import scrape_team_list
-from service.team_service import get_all_teams, get_team_by_alternate, get_team_by_name
+from scraper.team_list import scrape_all_teams, scrape_team_list
+from service.team_service import get_all_teams, get_team_by_JP_name, get_team_by_alternate, get_team_by_name, update_team_jleague_path
 from fastapi import Depends 
 from service.player_service import create_player, get_player_by_team_and_number, get_player_link, update_dob, update_ordb_id, update_wyscout_id
 from service.task_service import create_missing_EN_name_task, create_missing_dob_task, create_missing_ordb_id_task, create_missing_team_id_task, create_missing_transfermarkt_URL_task, create_missing_wyscout_id_task, get_task, remove_task
@@ -156,7 +156,26 @@ def get_EN_names(db: Session = Depends(get_session)):
                 print(f"COMPLETED {player.EN_name}, {player.back_number} -> {player.transfermarkt_URL} ({player.date_of_birth})")
 
         db.commit()
-                
+
+def add_jleague_url(db: Session = Depends(get_session)):
+    print("scraping J1...")
+    j1 = scrape_all_teams("https://www.jleague.jp/j1/club/")
+    print("scraping J2...")
+    j2 = scrape_all_teams("https://www.jleague.jp/j2/club/")
+    print("scraping J3...")
+    j3 = scrape_all_teams("https://www.jleague.jp/j3/club/")
+    combined = j1 | j2 | j3
+
+    for name in combined:
+        team = update_team_jleague_path(db, name, combined[name])
+
+        if team is None:
+            print(name, "could not be found in db")
+        else:
+            print(name, "updated jleague path", combined[name])
+
+    db.commit()
+
 def get_team(type: str, team: str, teams: list) -> str:
     for team_name in teams:
         if teams[team_name]["alternate_names"][type] == team:
@@ -166,7 +185,7 @@ def get_team(type: str, team: str, teams: list) -> str:
 def update():
     db = next(get_session())
     try:
-        update_tasks(db)
+        add_jleague_url(db)
     finally:
         db.close()
 

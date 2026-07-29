@@ -25,3 +25,14 @@ def scrape_team_list(team: Team) -> dict:
         ret[back_number_text]["name"] = name_text
         ret[back_number_text]["dob"] = birthdate_text.split(" ")[0]
     return ret
+
+def scrape_all_teams(league_url: str):
+    ret = {}
+    soup = scrape_page(league_url, ".m-club-list__item-clubs")
+    teams = soup.select('.m-club-list-item__link')
+
+    for team in teams:
+        JP_name = team.get_text(strip=True)
+        ret[JP_name] = 'https://www.jleague.jp' + team.get('href')
+    
+    return ret

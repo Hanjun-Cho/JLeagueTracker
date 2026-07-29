@@ -12,6 +12,16 @@ def get_team_by_name(db: Session, name: str) -> Team | None:
     team = db.query(Team).filter(Team.EN_name == name).first();
     return team
 
+def get_team_by_JP_name(db: Session, name: str) -> Team | None:
+    team = db.query(Team).filter(Team.JP_name == name).first()
+    return team
+
+def update_team_jleague_path(db: Session, name: str, path: str) -> Team | None:
+    if team := get_team_by_JP_name(db, name):
+        team.jleague = path
+        return team
+    return None
+
 def get_team_by_alternate(db: Session, name: str, alt_type: str) -> Team | None:
     if alt_type == "ordb":
         team = db.query(Team).filter(Team.ordb_name == name).first();
